@@ -140,7 +140,7 @@ if __name__ == '__main__':
     N = len(data)
     training_rate, validation_rate, test_rate = 0.6, 0.3, 0.1
     training_size, validation_size = np.int(N * training_rate), np.int(N * validation_rate)
-    training_size, validation_size = 10, 1
+    #training_size, validation_size = 10, 1
     test_size = N - training_size - validation_size
     training_data, validation_data, testing_data = torch.utils.data.random_split(data, [training_size, validation_size,
                                                                          test_size])
