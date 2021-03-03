@@ -125,6 +125,7 @@ if __name__ == '__main__':
     parser.add_argument("--save", type = str, default='model', help = "file to save the plots and model")
     parser.add_argument("--mode", type = str, default='train', help = "set training mode or test mode")
     parser.add_argument("--load", type = str, default=None, help = 'load pre-trained model')
+    parser.add_argument("--bidirectional", type = bool, default=False, help = 'use bidirecitonal lstm' )
 
     opt = parser.parse_args()
 
@@ -153,8 +154,8 @@ if __name__ == '__main__':
     STATIC_DIM = 9
     HIDDEN_DIM_LSTM = 128
     HIDDEN_DIM_FFN = 128
-
-    model = LSTM_4(FEATURE_DIM, STATIC_DIM, HIDDEN_DIM_LSTM, HIDDEN_DIM_FFN)
+    print(opt.bidirectional)
+    model = LSTM_4(FEATURE_DIM, STATIC_DIM, HIDDEN_DIM_LSTM, HIDDEN_DIM_FFN, opt.bidirectional)
     model.double()
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-3)

@@ -5,14 +5,14 @@ import numpy as np
 
 
 class LSTM_4(nn.Module):
-    def __init__(self, feature_dim, static_dim, hidden_dim_lstm, hidden_dim_ffn):
+    def __init__(self, feature_dim, static_dim, hidden_dim_lstm, hidden_dim_ffn, bidirectional = False):
 
 
         super(LSTM_4,self).__init__()
 
         # use 1-layer lstm
         num_layer = 1
-        self.rnn = nn.LSTM(feature_dim, hidden_dim_lstm, num_layer)
+        self.rnn = nn.LSTM(feature_dim, hidden_dim_lstm, num_layer, bidirectional)
 
         #self.ffn = nn.Linear(hidden_dim + static_dim, 1, bias)
         # combine the static features with lstm's hidden layer and feed them to a ffn

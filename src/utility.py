@@ -6,6 +6,17 @@ def running_mean(x, N):
     return (cumsum[N:] - cumsum[:-N]) / float(N)
 
 
+def nearest_neighbor(point, candidate, num):
+    """
+
+    :param point: (x,y)
+    :param candidate: a list of (x,y)
+    :param num: select num nearest neighbors
+    :return:
+    """
+    pass
+
+
 
 
 

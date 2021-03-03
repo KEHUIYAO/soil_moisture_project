@@ -46,10 +46,14 @@ def evaluate_plus(model, device, dataLoader, criterion, teacher_force_ratio):
             rsquare_list[rsquare] = i
 
     # plot 25th, 50th, 75th, 90th quantile of predicted SMAP_1km corresponding to the rsquare
-    fig, ax = plt.subplots(1,4)
+
+
+
+
     rsquare = np.array(list(rsquare_list.keys()))
     for j,i in enumerate([0.25,0.5,0.75,0.9]):
-
+        fig, ax = plt.subplots()
+        fig2, ax2 = plt.subplots()
 
         cur_rsquare = np.quantile(rsquare, i)
         id = rsquare_list[cur_rsquare]
@@ -66,14 +70,28 @@ def evaluate_plus(model, device, dataLoader, criterion, teacher_force_ratio):
         static = static.unsqueeze(0)
 
         output = model(x, mask, features, static, teacher_force_ratio)
+        predicted = output[:, :-1, :].view(-1).detach().cpu().numpy()
+        time = np.arange(len(predicted)) + 1
+        ax2.plot(time, predicted, label='predicted')
+        ax2.legend()
+        ax2.set_title(str(i)+'quantile')
+
         mask = mask > 0
         output, x = output[:, :-1, :][mask[:, 1:, :]].view(-1).detach().cpu().numpy(), x[:, 1:, :][mask[:, 1:, :]].view(-1).detach().cpu().numpy()
 
         time = np.arange(len(x))+1
-        ax[j].plot(time, x)
-        ax[j].plot(time, output)
+        ax.plot(time, x, label = 'true')
+        ax.plot(time, output, label = 'predicted')
+        ax.legend()
+        ax.set_xlabel("time")
+        ax.set_ylabel("y")
+        ax.set_title(str(i)+' quantile')
 
-    plt.show()
+
+        plt.show()
+
+
+
 
     return epoch_loss / len(dataLoader), rsquare_total / len(dataLoader)
 
@@ -85,7 +103,7 @@ if __name__ == "__main__":
 
     # load the data and making training set
     # """### Use DataLoader to store the data"""
-    data = SoilMoistureDataset("SMAP_Climate_In_Situ.csv")
+    data = SoilMoistureDataset("../../SMAP_Climate_In_Situ.csv")
 
     BATCH_SIZE = 1
     N = len(data)
