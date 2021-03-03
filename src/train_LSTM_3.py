@@ -233,9 +233,9 @@ if __name__ == '__main__':
 
     elif opt.mode == "test":
         if opt.load:
-            model.load_state_dict(torch.load(opt.load))
+            model.load_state_dict(torch.load(opt.load, map_location=device))
         else:
-            raise(ValueError("No model specified!"))
+            raise ValueError("No model specified!")
 
         # turn on evaluation mode
         model.eval()

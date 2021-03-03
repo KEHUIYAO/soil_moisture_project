@@ -124,7 +124,7 @@ if __name__ == '__main__':
     parser.add_argument("--ratio", type = float, default=1, help = "the teacher force ratio")
     parser.add_argument("--save", type = str, default='model', help = "file to save the plots and model")
     parser.add_argument("--mode", type = str, default='train', help = "set training mode or test mode")
-    parser.add_argument("--load", type = str, default='model.pt', help = 'load pre-trained model')
+    parser.add_argument("--load", type = str, default=None, help = 'load pre-trained model')
 
     opt = parser.parse_args()
 
@@ -134,13 +134,13 @@ if __name__ == '__main__':
 
     # load the data and making training set
     # """### Use DataLoader to store the data"""
-    data = SoilMoistureDataset("../data/SMAP_Climate_In_Situ.csv")
+    data = SoilMoistureDataset("../../SMAP_Climate_In_Situ.csv")
 
     BATCH_SIZE = 1
     N = len(data)
     training_rate, validation_rate, test_rate = 0.6, 0.3, 0.1
     training_size, validation_size = np.int(N * training_rate), np.int(N * validation_rate)
-    #training_size, validation_size = 100,10
+    training_size, validation_size = 10, 1
     test_size = N - training_size - validation_size
     training_data, validation_data, testing_data = torch.utils.data.random_split(data, [training_size, validation_size,
                                                                          test_size])
@@ -151,13 +151,15 @@ if __name__ == '__main__':
     # build the model
     FEATURE_DIM = 5
     STATIC_DIM = 9
-    HIDDEN_DIM_LSTM = 50
-    HIDDEN_DIM_FFN = 20
+    HIDDEN_DIM_LSTM = 128
+    HIDDEN_DIM_FFN = 128
 
     model = LSTM_4(FEATURE_DIM, STATIC_DIM, HIDDEN_DIM_LSTM, HIDDEN_DIM_FFN)
     model.double()
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    # device
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
     if opt.mode == "train":
@@ -167,16 +169,21 @@ if __name__ == '__main__':
         print(f'The model has {count_parameters(model):,} trainable parameters')
 
 
-        # device
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        # initialize the model
-        model.apply(init_weights)
+        # load from a pre-trained model if possible
+        if opt.load:
+            model.load_state_dict(torch.load(opt.load,map_location=device))
+        else:
+            # initialize the model
+            model.apply(init_weights)
+
         # number of epochs to train
         n_epochs = opt.epochs
         # set the teacher force ratio
         teacher_force_ratio = opt.ratio
         # gradient clipping
         clip = 1
+
+
         # training and validation result for each epoch
         train_loss_list = []
         valid_loss_list = []
@@ -209,9 +216,14 @@ if __name__ == '__main__':
         torch.save(model.state_dict(), opt.save+".pt")
 
     elif opt.mode == "test":
+
+        if opt.load:
+            model.load_state_dict(torch.load(opt.load,map_location=device))
+        else:
+            raise ValueError("No model specified!")
         model.load_state_dict(torch.load(opt.load))
         model.eval()
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
         teacher_force_ratio = opt.ratio
 
         valid_loss, rsquare = evaluate(model, device, testing_dataLoader, criterion, teacher_force_ratio)
