@@ -134,7 +134,7 @@ if __name__ == '__main__':
 
     # load the data and making training set
     # """### Use DataLoader to store the data"""
-    data = SoilMoistureDataset("../../SMAP_Climate_In_Situ.csv")
+    data = SoilMoistureDataset("SMAP_Climate_In_Situ.csv")
 
     BATCH_SIZE = 1
     N = len(data)
