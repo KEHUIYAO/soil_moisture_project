@@ -1,4 +1,5 @@
 from LSTM_3 import LSTM_3
+from LSTM_4 import LSTM_4
 from load_data_3 import SoilMoistureDataset
 import numpy as np
 import torch
@@ -117,17 +118,36 @@ if __name__ == "__main__":
     # validation_dataLoader = torch.utils.data.DataLoader(validation_data, batch_size=BATCH_SIZE, shuffle=True)
     testing_dataLoader = torch.utils.data.DataLoader(testing_data, batch_size=BATCH_SIZE, shuffle=True)
 
-    # build the model
+    # build the model for LSTM_3
+    # FEATURE_DIM = 5
+    # STATIC_DIM = 9
+    # HIDDEN_DIM_LSTM = 128
+    # HIDDEN_DIM_FFN = 128
+
+    # build the model for LSTM_4
     FEATURE_DIM = 5
     STATIC_DIM = 9
     HIDDEN_DIM_LSTM = 128
     HIDDEN_DIM_FFN = 128
+    bidirectional = False
 
-    # model
-    model = LSTM_3(FEATURE_DIM, STATIC_DIM, HIDDEN_DIM_LSTM, HIDDEN_DIM_FFN)
+
+
+    # model for LSTM_3
+    # model = LSTM_3(FEATURE_DIM, STATIC_DIM, HIDDEN_DIM_LSTM, HIDDEN_DIM_FFN)
+    # model.double()
+    # model_file = 'LSTM_3_free_run.pt'
+    # model.load_state_dict(torch.load(model_file,map_location=torch.device('cpu')))
+
+    # model for LSTM_4
+    model = LSTM_4(FEATURE_DIM, STATIC_DIM, HIDDEN_DIM_LSTM, HIDDEN_DIM_FFN, bidirectional)
     model.double()
-    model_file = 'LSTM_3_with_teacher.pt'
+    model_file = 'LSTM_4_with_teacher.pt'
     model.load_state_dict(torch.load(model_file,map_location=torch.device('cpu')))
+
+
+
+
 
     # loss criteria
     criterion = nn.MSELoss()
