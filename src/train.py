@@ -151,7 +151,7 @@ if __name__ == '__main__':
     parser.add_argument("--bias",type = bool, default= True, help = 'if True, include bias term in the lstm')
     parser.add_argument("--num_layers", type = int, default=1, help = 'number of layers used in the lstm network')
     parser.add_argument("--bidirectional", type = bool, default=False, help = 'if True, use bidirectional lstm')
-    parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
+    parser.add_argument("--load_data", type = str, default="SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
 
     parser.add_argument("--time_varying_features_name", type = str, default='prcp,srad,tmax,tmin,vp,SMAP_36km', help = "name of time varying features included")
     parser.add_argument("--static_features_name", type = str, default='elevation,slope,aspect,hillshade,clay,sand,bd,soc,LC', help = 'name of static features included')
