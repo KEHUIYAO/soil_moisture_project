@@ -74,6 +74,7 @@ def epoch_time(start_time, end_time):
 
 
 def train(model, device, dataLoader, optimizer, criterion, clip, teacher_force_ratio = 1):
+    model.to(device)
     model.train()
     epoch_loss = 0
     for i, batch in enumerate(dataLoader):
@@ -216,9 +217,11 @@ if __name__ == '__main__':
 
     model = SoilMoistureGapFilling(time_varying_dim, static_dim, lstm_hidden_dim, ffn_hidden_dim, num_layers, bidirectional, bias, dropout, direct_connection_from_previous_output)
     model.double()
+
     # device
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("I am running on the", device)
+
 
     if torch.cuda.device_count() > 1 and opt.parallel == "enable":
         print("Let's use", torch.cuda.device_count(), "GPUs!")
