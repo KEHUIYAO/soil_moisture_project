@@ -24,7 +24,7 @@ class SoilMoistureDataset(Dataset):
 
         data = pd.read_csv(csv_file)
         # do not use Insitu observations
-        data = data.iloc[:946080, ]
+        data = data.iloc[:946085, ]
         data['formatted_date'] = pd.to_datetime(data.Date, format='%Y%m%d')
         # create a column called mask, which indicates whether SMAP_1km data is missing or not
         data['mask'] = 1
