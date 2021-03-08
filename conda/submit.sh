@@ -36,4 +36,4 @@ conda list
 
 # Modify these lines to run your desired Python script
 python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'CUDA device: {torch.cuda.get_device_name(0)}')"
-python train.py --epochs=100
+python train.py --epochs=100 --save_figure='model.png' 
