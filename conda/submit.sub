@@ -1,5 +1,5 @@
 universe = vanilla
-executable = pytorch_cnn.sh
+executable = submit.sh
 output = $(Cluster)_$(Process).out
 
 transfer_input_files = environment.yml, ../src/train.py, ../src/load_data.py, ../src/model.py, ../data/SMAP_Climate_In_Situ_Kenaston_training_data.csv.zip

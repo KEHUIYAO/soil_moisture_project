@@ -1,0 +1,44 @@
+000 (8891399.000.000) 2021-03-08 09:36:44 Job submitted from host: <128.104.101.92:9618?addrs=128.104.101.92-9618+[2607-f388-107c-501-a236-9fff-fe3c-caa8]-9618&alias=submit2.chtc.wisc.edu&noUDP&sock=schedd_77175_3596>
+...
+040 (8891399.000.000) 2021-03-08 09:36:51 Started transferring input files
+	Transferring to host: <128.105.244.146:9618?addrs=128.105.244.146-9618&alias=gpulab2002.chtc.wisc.edu&noUDP&sock=slot1_3_14017_fe93_208607>
+...
+040 (8891399.000.000) 2021-03-08 09:36:51 Finished transferring input files
+...
+001 (8891399.000.000) 2021-03-08 09:36:52 Job executing on host: <128.105.244.146:9618?addrs=128.105.244.146-9618&alias=gpulab2002.chtc.wisc.edu&noUDP&sock=startd_4245_4b9e>
+...
+006 (8891399.000.000) 2021-03-08 09:37:01 Image size of job updated: 539772
+	528  -  MemoryUsage of job (MB)
+	539772  -  ResidentSetSize of job (KB)
+...
+006 (8891399.000.000) 2021-03-08 09:42:03 Image size of job updated: 4194224
+	4096  -  MemoryUsage of job (MB)
+	4194224  -  ResidentSetSize of job (KB)
+...
+006 (8891399.000.000) 2021-03-08 09:47:03 Image size of job updated: 4194232
+	4096  -  MemoryUsage of job (MB)
+	4194232  -  ResidentSetSize of job (KB)
+...
+040 (8891399.000.000) 2021-03-08 14:17:17 Started transferring output files
+...
+040 (8891399.000.000) 2021-03-08 14:17:18 Finished transferring output files
+...
+005 (8891399.000.000) 2021-03-08 14:17:18 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 04:33:48, Sys 0 00:06:16  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 04:33:48, Sys 0 00:06:16  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	106632560  -  Run Bytes Sent By Job
+	16566115  -  Run Bytes Received By Job
+	106632560  -  Total Bytes Sent By Job
+	16566115  -  Total Bytes Received By Job
+	Partitionable Resources :       Usage  Request Allocated Assigned
+	   Cpus                 :        1.00        1         1 
+	   Disk (KB)            : 14636059     5242880  10572281 
+	   Gpus (Average)       :                    1         1 "GPU-2e4ade0b"
+	   IoHeavy              :                              0 
+	   Memory (MB)          :     4096        4096      4096 
+
+	Job terminated of its own accord at 2021-03-08T20:17:16Z.
+...
