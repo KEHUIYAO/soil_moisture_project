@@ -96,8 +96,7 @@ def test(model, device, dataLoader, criterion, teacher_force_ratio = 1):
         ax2.set_title(str(i)+'quantile')
 
         mask = mask > 0
-        output, x = output[:, :-1, :][mask[:, 1:, :]].view(-1).item()
-
+        output, x = output[:, :-1, :][mask[:, 1:, :]].view(-1).detach().cpu().numpy(), x[:, 1:, :][mask[:, 1:, :]].view(-1).detach().cpu().numpy()
         time = np.arange(len(x))+1
         ax.plot(time, x, label = 'true')
         ax.plot(time, output, label = 'predicted')
@@ -118,7 +117,7 @@ def test(model, device, dataLoader, criterion, teacher_force_ratio = 1):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_testing_data.csv", help = 'file name of the dataset')
-    parser.add_argument("--load_entire_model", type = str, default="model_entire.pt", help = 'file name to load the entire model')
+    parser.add_argument("--load_entire_model", type = str, default="../conda/model_entire_2.pt", help = 'file name to load the entire model')
 
     opt = parser.parse_args()
 
@@ -131,8 +130,9 @@ if __name__ == "__main__":
     BATCH_SIZE = 1
     N = len(data)
     testing_dataLoader = torch.utils.data.DataLoader(data, batch_size=BATCH_SIZE, shuffle=True)
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    model = torch.load(opt.load_entire_model)
+    model = torch.load(opt.load_entire_model, map_location=torch.device(device))
     model.eval()
 
 
