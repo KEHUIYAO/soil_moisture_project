@@ -26,7 +26,15 @@ import sys
 from model import SoilMoistureGapFilling
 from load_data import SoilMoistureDataset
 
-
+def str2bool(v):
+    if isinstance(v, bool):
+       return v
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 
 def Rsquare(x, y):
@@ -140,19 +148,19 @@ def evaluate(model,device, dataLoader, criterion, teacher_force_ratio):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type = int, default=20, help = "number of epochs to train")
+    parser.add_argument("--epochs", type = int, default=1, help = "number of epochs to train")
     parser.add_argument("--ratio", type = float, default=1, help = "the teacher force ratio ranging from 0 to 1")
     parser.add_argument("--save_model", type = str, default='model.pt', help = "file to save the model")
     parser.add_argument("--save_figure", type = str, default='model.png', help = "file to save the training and validation performance through epochs")
     parser.add_argument("--save_entire_model", type = str, default='model_entire.pt', help = "file to save the entire model")
 
     parser.add_argument("--load_model", type = str, default=None, help = 'if specified model name, load pre-trained model')
-    parser.add_argument("--parallel", type = bool, default= False, help = 'if True, enable parallel training')
-    parser.add_argument("--direct_connection_from_previous_output", type = bool, default = True, help = 'if True, add direct connection from previous output to current input')
-    parser.add_argument("--bias",type = bool, default= True, help = 'if True, include bias term in the lstm')
+    parser.add_argument("--parallel", type = str, default= 'false', help = 'if True, enable parallel training')
+    parser.add_argument("--direct_connection_from_previous_output", type = str, default = 'false', help = 'if True, add direct connection from previous output to current input')
+    parser.add_argument("--bias",type = str, default= 'true', help = 'if True, include bias term in the lstm')
     parser.add_argument("--num_layers", type = int, default=1, help = 'number of layers used in the lstm network')
-    parser.add_argument("--bidirectional", type = bool, default=False, help = 'if True, use bidirectional lstm')
-    parser.add_argument("--load_data", type = str, default="SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
+    parser.add_argument("--bidirectional", type = str, default='false', help = 'if True, use bidirectional lstm')
+    parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
 
     parser.add_argument("--time_varying_features_name", type = str, default='prcp,srad,tmax,tmin,vp,SMAP_36km', help = "name of time varying features included")
     parser.add_argument("--static_features_name", type = str, default='elevation,slope,aspect,hillshade,clay,sand,bd,soc,LC', help = 'name of static features included')
@@ -207,11 +215,12 @@ if __name__ == '__main__':
     lstm_hidden_dim = opt.lstm_hidden_dim
     ffn_hidden_dim = opt.ffn_hidden_dim
     num_layers = opt.num_layers
-    bidirectional = opt.bidirectional
-    bias = opt.bias
+    bidirectional = str2bool(opt.bidirectional)
+    bias = str2bool(opt.bias)
     dropout = opt.dropout
-    direct_connection_from_previous_output = opt.direct_connection_from_previous_output
-
+    direct_connection_from_previous_output = str2bool(opt.direct_connection_from_previous_output)
+    #print(opt.direct_connection_from_previous_output)
+    print(direct_connection_from_previous_output)
 
 
 
@@ -223,7 +232,7 @@ if __name__ == '__main__':
     print("I am running on the", device)
 
 
-    if torch.cuda.device_count() > 1 and opt.parallel == "enable":
+    if torch.cuda.device_count() > 1 and str2bool(opt.parallel):
         print("Let's use", torch.cuda.device_count(), "GPUs!")
         # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
         model = nn.DataParallel(model)

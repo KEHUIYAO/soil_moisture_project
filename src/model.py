@@ -9,8 +9,10 @@ class SoilMoistureGapFilling(nn.Module):
         super(SoilMoistureGapFilling,self).__init__()
         # if there is a direct connection from previous output to current hidden state
         if direct_connection_from_previous_output:
+            print("use direct connection from previous output!")
             lstm_input_dim = time_varying_dim + 1
         else:
+            print("do not use direct connection from previous output!")
             lstm_input_dim = time_varying_dim
 
         self.direct_connection_from_previous_output = direct_connection_from_previous_output
