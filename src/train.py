@@ -156,18 +156,18 @@ if __name__ == '__main__':
 
     parser.add_argument("--load_model", type = str, default=None, help = 'if specified model name, load pre-trained model')
     parser.add_argument("--parallel", type = str, default= 'false', help = 'if True, enable parallel training')
-    parser.add_argument("--direct_connection_from_previous_output", type = str, default = 'false', help = 'if True, add direct connection from previous output to current input')
+    parser.add_argument("--direct_connection_from_previous_output", type = str, default = 'true', help = 'if True, add direct connection from previous output to current input')
     parser.add_argument("--bias",type = str, default= 'true', help = 'if True, include bias term in the lstm')
     parser.add_argument("--num_layers", type = int, default=1, help = 'number of layers used in the lstm network')
     # parser.add_argument("--bidirectional", type = str, default='false', help = 'if True, use bidirectional lstm')
-    parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
+    parser.add_argument("--load_data", type = str, default="SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
 
     parser.add_argument("--time_varying_features_name", type = str, default='prcp,srad,tmax,tmin,vp,SMAP_36km', help = "name of time varying features included")
     parser.add_argument("--static_features_name", type = str, default='elevation,slope,aspect,hillshade,clay,sand,bd,soc,LC', help = 'name of static features included')
     parser.add_argument("--lstm_hidden_dim", type = int, default=128, help = 'the hidden dim of the lstm')
     parser.add_argument("--ffn_hidden_dim", type = int, default=128, help = 'the hidden dim of the ffn')
     parser.add_argument("--dropout", type = float, default= 0, help = 'the dropout rate in lstm')
-    parser.add_argument("--early_stopping_patience", type = int, default = 5, help = 'set the maximum number of epochs we should wait when the validation error does not decrease')
+    parser.add_argument("--early_stopping_patience", type = int, default = 10, help = 'set the maximum number of epochs we should wait when the validation error does not decrease')
     parser.add_argument("--criterion", type = str, default='mse', help='choose mse or rsquare as the loss')
 
 
