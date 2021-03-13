@@ -36,15 +36,15 @@ def split_data(csv_file, training_data_proportion):
 
 if __name__ == '__main__':
 
-    #
-    # training_data, testing_data = split_data("../../SMAP_Climate_In_Situ_TxSON.csv",0.7)
-    #
-    # training_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_training_data.csv")
-    # testing_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_testing_data.csv")
-    #
 
-    training_data, testing_data = split_data("../../SMAP_Climate_In_Situ_Kenaston.csv",0.7)
+    training_data, testing_data = split_data("../../SMAP_Climate_In_Situ_TxSON.csv",0.7)
 
-    training_data.to_csv("../../SMAP_Climate_In_Situ_Kenaston_training_data.csv")
-    testing_data.to_csv("../../SMAP_Climate_In_Situ_Kenaston_testing_data.csv")
+    training_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_training_data.csv")
+    testing_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_testing_data.csv")
+    #
+    #
+    # training_data, testing_data = split_data("../../SMAP_Climate_In_Situ_Kenaston.csv",0.7)
+    #
+    # training_data.to_csv("../../SMAP_Climate_In_Situ_Kenaston_training_data.csv")
+    # testing_data.to_csv("../../SMAP_Climate_In_Situ_Kenaston_testing_data.csv")
 
