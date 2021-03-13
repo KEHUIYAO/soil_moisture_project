@@ -159,7 +159,7 @@ if __name__ == '__main__':
     parser.add_argument("--direct_connection_from_previous_output", type = str, default = 'false', help = 'if True, add direct connection from previous output to current input')
     parser.add_argument("--bias",type = str, default= 'true', help = 'if True, include bias term in the lstm')
     parser.add_argument("--num_layers", type = int, default=1, help = 'number of layers used in the lstm network')
-    parser.add_argument("--bidirectional", type = str, default='false', help = 'if True, use bidirectional lstm')
+    # parser.add_argument("--bidirectional", type = str, default='false', help = 'if True, use bidirectional lstm')
     parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
 
     parser.add_argument("--time_varying_features_name", type = str, default='prcp,srad,tmax,tmin,vp,SMAP_36km', help = "name of time varying features included")
@@ -215,7 +215,8 @@ if __name__ == '__main__':
     lstm_hidden_dim = opt.lstm_hidden_dim
     ffn_hidden_dim = opt.ffn_hidden_dim
     num_layers = opt.num_layers
-    bidirectional = str2bool(opt.bidirectional)
+    # bidirectional = str2bool(opt.bidirectional)
+    bidirectional = False
     bias = str2bool(opt.bias)
     dropout = opt.dropout
     direct_connection_from_previous_output = str2bool(opt.direct_connection_from_previous_output)

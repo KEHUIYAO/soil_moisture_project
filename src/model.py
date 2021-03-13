@@ -16,16 +16,13 @@ class SoilMoistureGapFilling(nn.Module):
             lstm_input_dim = time_varying_dim
 
         self.direct_connection_from_previous_output = direct_connection_from_previous_output
+
         # LSTM
         self.lstm = nn.LSTM(input_size=lstm_input_dim, hidden_size=lstm_hidden_dim, num_layers=num_layers, bias=True, dropout = dropout, bidirectional=bidirectional)
 
 
         # Feed forward network
-        if bidirectional:
-            num_directions = 2
-        else:
-            num_directions = 1
-        self.ffn = nn.Sequential(nn.Linear(lstm_hidden_dim*num_directions + static_dim, ffn_hidden_dim),
+        self.ffn = nn.Sequential(nn.Linear(lstm_hidden_dim + static_dim, ffn_hidden_dim),
                                  nn.ReLU(),
                                  nn.Linear(ffn_hidden_dim, 1)
                                  )
