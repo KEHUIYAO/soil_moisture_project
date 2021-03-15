@@ -140,11 +140,12 @@ class DecoderLayer(nn.Module):
 
 def subsequent_mask(mask):
     # mask has dimension (batch_size, seq_len, 1)
+    device = mask.device
     mask= mask.squeeze(2)
     size = mask.size(1)
-    subsequent_mask = torch.ones((size,size)) * mask
+    subsequent_mask = torch.ones((size,size), device=device) * mask
 
-    off_diagonal_mask = torch.diag(torch.ones(size - 1), diagonal=1)
+    off_diagonal_mask = torch.diag(torch.ones(size - 1), diagonal=1, device = device)
     subsequent_mask.masked_fill_(off_diagonal_mask==1,0)
 
     return subsequent_mask.unsqueeze(0)
