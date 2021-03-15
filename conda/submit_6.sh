@@ -36,4 +36,4 @@ conda list
 
 # Modify these lines to run your desired Python script
 python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'CUDA device: {torch.cuda.get_device_name(0)}')"
-python train.py --lstm_hidden_dim=512 --ffn_hidden_dim=256 --epochs=100 --early_stopping_patience=10 --direct_connection_from_previous_output=True --time_varying_features_name='prcp,srad,tmax,tmin,vp,SMAP_36km' --save_model='model_4.pt' --save_entire_model='model_entire_5.pt' --save_figure='model_5.png'
+python train.py --lstm_hidden_dim=128 --ffn_hidden_dim=128 --num_layers=2 --epochs=100 --early_stopping_patience=10 --direct_connection_from_previous_output=True --time_varying_features_name='prcp,srad,tmax,tmin,vp,SMAP_36km' --save_model='model_6.pt' --save_entire_model='model_entire_6.pt' --save_figure='model_6.png'
