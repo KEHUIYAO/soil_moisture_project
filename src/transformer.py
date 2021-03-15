@@ -146,8 +146,8 @@ def subsequent_mask(mask):
     subsequent_mask = torch.ones((size,size), device=device) * mask
 
     off_diagonal_mask = torch.diag(torch.ones(size - 1), diagonal=1)
-    off_diagonal_mask.to(device)
-    subsequent_mask.masked_fill_(off_diagonal_mask==1,torch.tensor(0, device = device))
+    off_diagonal_mask = off_diagonal_mask.to(device)
+    subsequent_mask.masked_fill_(off_diagonal_mask==1, 0)
 
     return subsequent_mask.unsqueeze(0)
 
