@@ -91,7 +91,11 @@ def train(model, device, dataLoader, optimizer, criterion, clip=1):
         x = x.to(device)
         mask = mask.to(device)
         features = features.to(device)
-        #static = static.to(device)
+        static = static.to(device)
+
+        # combine time varying features and static features together
+        features = torch.cat([features, static], dim=2)
+
         optimizer.zero_grad()
         src_mask = None
         trt_mask = subsequent_mask(mask)
@@ -122,6 +126,8 @@ def evaluate(model,device, dataLoader, criterion):
             features = features.to(device)
             static = static.to(device)
 
+            # combine time varying features and static features together
+            features = torch.cat([features, static], dim=2)
             # teacher force evaluation, which micmics the situation of temporal gap filling
             src_mask = None
             tgt_mask = subsequent_mask(mask)
@@ -164,7 +170,7 @@ if __name__ == '__main__':
     parser.add_argument("--criterion", type = str, default='mse', help='choose mse or rsquare as the loss')
     parser.add_argument("--d_model", type=int, default=16)
     parser.add_argument("--d_ff", type=int, default=64)
-    parser.add_argument("h", type=int, default=4)
+    parser.add_argument("--h", type=int, default=4)
 
 
 
