@@ -1,0 +1,60 @@
+000 (8893313.000.000) 2021-03-15 10:54:18 Job submitted from host: <128.104.101.92:9618?addrs=128.104.101.92-9618+[2607-f388-107c-501-a236-9fff-fe3c-caa8]-9618&alias=submit2.chtc.wisc.edu&noUDP&sock=schedd_77175_3596>
+...
+040 (8893313.000.000) 2021-03-15 10:54:20 Started transferring input files
+	Transferring to host: <128.105.245.10:9618?addrs=128.105.245.10-9618&alias=gpu2000.chtc.wisc.edu&noUDP&sock=slot1_2_7994_3efe_184086>
+...
+040 (8893313.000.000) 2021-03-15 10:54:20 Finished transferring input files
+...
+001 (8893313.000.000) 2021-03-15 10:54:21 Job executing on host: <128.105.245.10:9618?addrs=128.105.245.10-9618&alias=gpu2000.chtc.wisc.edu&noUDP&sock=startd_6925_8d6f>
+...
+006 (8893313.000.000) 2021-03-15 10:54:30 Image size of job updated: 620232
+	606  -  MemoryUsage of job (MB)
+	620232  -  ResidentSetSize of job (KB)
+...
+006 (8893313.000.000) 2021-03-15 10:59:31 Image size of job updated: 4193956
+	4096  -  MemoryUsage of job (MB)
+	4193956  -  ResidentSetSize of job (KB)
+...
+006 (8893313.000.000) 2021-03-15 11:04:32 Image size of job updated: 4194080
+	4096  -  MemoryUsage of job (MB)
+	4194080  -  ResidentSetSize of job (KB)
+...
+006 (8893313.000.000) 2021-03-15 11:09:32 Image size of job updated: 4194116
+	4096  -  MemoryUsage of job (MB)
+	4194116  -  ResidentSetSize of job (KB)
+...
+006 (8893313.000.000) 2021-03-15 11:24:34 Image size of job updated: 4194140
+	4096  -  MemoryUsage of job (MB)
+	4194140  -  ResidentSetSize of job (KB)
+...
+006 (8893313.000.000) 2021-03-15 11:29:34 Image size of job updated: 4194148
+	4096  -  MemoryUsage of job (MB)
+	4194148  -  ResidentSetSize of job (KB)
+...
+006 (8893313.000.000) 2021-03-15 11:54:37 Image size of job updated: 4194164
+	4096  -  MemoryUsage of job (MB)
+	4194164  -  ResidentSetSize of job (KB)
+...
+040 (8893313.000.000) 2021-03-15 16:06:41 Started transferring output files
+...
+040 (8893313.000.000) 2021-03-15 16:06:44 Finished transferring output files
+...
+005 (8893313.000.000) 2021-03-15 16:06:45 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 05:04:53, Sys 0 00:01:28  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 05:04:53, Sys 0 00:01:28  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	259530352  -  Run Bytes Sent By Job
+	16570756  -  Run Bytes Received By Job
+	259530352  -  Total Bytes Sent By Job
+	16570756  -  Total Bytes Received By Job
+	Partitionable Resources :       Usage  Request Allocated Assigned
+	   Cpus                 :        0.99        1         1 
+	   Disk (KB)            : 14795949     5242880   7257637 
+	   Gpus (Average)       :                    1         1 "GPU-649ceda8"
+	   IoHeavy              :                              0 
+	   Memory (MB)          :     4096        4096      4096 
+
+	Job terminated of its own accord at 2021-03-15T21:06:40Z.
+...

@@ -1,0 +1,129 @@
+000 (8893293.000.000) 2021-03-15 09:35:36 Job submitted from host: <128.104.101.92:9618?addrs=128.104.101.92-9618+[2607-f388-107c-501-a236-9fff-fe3c-caa8]-9618&alias=submit2.chtc.wisc.edu&noUDP&sock=schedd_77175_3596>
+...
+040 (8893293.000.000) 2021-03-15 09:35:39 Started transferring input files
+	Transferring to host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=slot1_1_129639_2731_224158>
+...
+040 (8893293.000.000) 2021-03-15 09:35:39 Finished transferring input files
+...
+001 (8893293.000.000) 2021-03-15 09:35:40 Job executing on host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+006 (8893293.000.000) 2021-03-15 09:35:50 Image size of job updated: 10533696
+	10287  -  MemoryUsage of job (MB)
+	10533696  -  ResidentSetSize of job (KB)
+...
+006 (8893293.000.000) 2021-03-15 09:35:51 Image size of job updated: 10608932
+	10361  -  MemoryUsage of job (MB)
+	10608932  -  ResidentSetSize of job (KB)
+...
+004 (8893293.000.000) 2021-03-15 09:35:51 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:08, Sys 0 00:00:04  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	16569465  -  Run Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated Assigned
+	   Cpus                 :       1.01        1         1 
+	   Disk (KB)            : 1236766     5242880   7244850 
+	   Gpus (Average)       :                   1         1 "GPU-ddc1c098"
+	   IoHeavy              :                             0 
+	   Memory (MB)          :   10361        4096      4096 
+...
+040 (8893293.000.000) 2021-03-15 09:37:28 Started transferring input files
+	Transferring to host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=slot1_1_129639_2731_224172>
+...
+040 (8893293.000.000) 2021-03-15 09:37:28 Finished transferring input files
+...
+001 (8893293.000.000) 2021-03-15 09:37:29 Job executing on host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+004 (8893293.000.000) 2021-03-15 09:37:30 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:00, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	16569465  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.43        1         1 
+	   Disk (KB)            : 20371     5242880   7244850 
+	   Gpus (Average)       :                 1         1 "GPU-ddc1c098"
+	   IoHeavy              :                           0 
+	   Memory (MB)          : 12208        4096      4096 
+...
+022 (8893293.000.000) 2021-03-15 09:37:36 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@gpu2001.chtc.wisc.edu <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+024 (8893293.000.000) 2021-03-15 09:37:36 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@gpu2001.chtc.wisc.edu, rescheduling job
+...
+040 (8893293.000.000) 2021-03-15 09:37:45 Started transferring input files
+	Transferring to host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=slot1_1_129639_2731_224175>
+...
+040 (8893293.000.000) 2021-03-15 09:37:45 Finished transferring input files
+...
+001 (8893293.000.000) 2021-03-15 09:37:46 Job executing on host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+004 (8893293.000.000) 2021-03-15 09:37:47 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	16569465  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.43        1         1 
+	   Disk (KB)            : 19400     5242880   7244850 
+	   Gpus (Average)       :                 1         1 "GPU-ddc1c098"
+	   IoHeavy              :                           0 
+	   Memory (MB)          : 12208        4096      4096 
+...
+040 (8893293.000.000) 2021-03-15 09:37:53 Started transferring input files
+	Transferring to host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=slot1_1_129639_2731_224177>
+...
+040 (8893293.000.000) 2021-03-15 09:37:53 Finished transferring input files
+...
+001 (8893293.000.000) 2021-03-15 09:37:54 Job executing on host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+004 (8893293.000.000) 2021-03-15 09:37:55 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:00, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	16569465  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :    19795  5242880   7244850 
+	   Gpus (Average)       :                 1         1 "GPU-ddc1c098"
+	   IoHeavy              :                           0 
+	   Memory (MB)          :    12208     4096      4096 
+...
+022 (8893293.000.000) 2021-03-15 09:38:01 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_1@gpu2001.chtc.wisc.edu <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+024 (8893293.000.000) 2021-03-15 09:38:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_1@gpu2001.chtc.wisc.edu, rescheduling job
+...
+040 (8893293.000.000) 2021-03-15 09:38:11 Started transferring input files
+	Transferring to host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=slot1_1_129639_2731_224181>
+...
+040 (8893293.000.000) 2021-03-15 09:38:12 Finished transferring input files
+...
+001 (8893293.000.000) 2021-03-15 09:38:13 Job executing on host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+004 (8893293.000.000) 2021-03-15 09:38:14 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	16569465  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :    19283  5242880   7244850 
+	   Gpus (Average)       :                 1         1 "GPU-ddc1c098"
+	   IoHeavy              :                           0 
+	   Memory (MB)          :    12208     4096      4096 
+...
+009 (8893293.000.000) 2021-03-15 09:38:17 Job was aborted.
+	via condor_rm (by user kyao24)
+...

@@ -1,0 +1,40 @@
+000 (8893311.000.000) 2021-03-15 10:48:37 Job submitted from host: <128.104.101.92:9618?addrs=128.104.101.92-9618+[2607-f388-107c-501-a236-9fff-fe3c-caa8]-9618&alias=submit2.chtc.wisc.edu&noUDP&sock=schedd_77175_3596>
+...
+040 (8893311.000.000) 2021-03-15 10:48:45 Started transferring input files
+	Transferring to host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=slot1_2_129639_2731_225027>
+...
+040 (8893311.000.000) 2021-03-15 10:48:45 Finished transferring input files
+...
+001 (8893311.000.000) 2021-03-15 10:48:46 Job executing on host: <128.105.245.13:9618?addrs=128.105.245.13-9618&alias=gpu2001.chtc.wisc.edu&noUDP&sock=startd_5640_263c>
+...
+006 (8893311.000.000) 2021-03-15 10:48:56 Image size of job updated: 575968
+	563  -  MemoryUsage of job (MB)
+	575968  -  ResidentSetSize of job (KB)
+...
+006 (8893311.000.000) 2021-03-15 10:53:57 Image size of job updated: 4194304
+	4096  -  MemoryUsage of job (MB)
+	4194304  -  ResidentSetSize of job (KB)
+...
+040 (8893311.000.000) 2021-03-15 12:30:44 Started transferring output files
+...
+040 (8893311.000.000) 2021-03-15 12:30:46 Finished transferring output files
+...
+005 (8893311.000.000) 2021-03-15 12:30:46 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 01:40:19, Sys 0 00:00:56  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 01:40:19, Sys 0 00:00:56  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	122844224  -  Run Bytes Sent By Job
+	16570709  -  Run Bytes Received By Job
+	122844224  -  Total Bytes Sent By Job
+	16570709  -  Total Bytes Received By Job
+	Partitionable Resources :       Usage  Request Allocated Assigned
+	   Cpus                 :        0.98        1         1 
+	   Disk (KB)            : 14662470     5242880   7244850 
+	   Gpus (Average)       :                    1         1 "GPU-9dc7c6d6"
+	   IoHeavy              :                              0 
+	   Memory (MB)          :     4096        4096      4096 
+
+	Job terminated of its own accord at 2021-03-15T17:30:44Z.
+...
