@@ -27,6 +27,39 @@ import sys
 from transformer import *
 from load_data import SoilMoistureDataset
 
+
+class NoamOpt:
+    "Optim wrapper that implements rate."
+
+    def __init__(self, model_size, factor, warmup, optimizer):
+        self.optimizer = optimizer
+        self._step = 0
+        self.warmup = warmup
+        self.factor = factor
+        self.model_size = model_size
+        self._rate = 0
+
+    def step(self):
+        "Update parameters and rate"
+        self._step += 1
+        rate = self.rate()
+        for p in self.optimizer.param_groups:
+            p['lr'] = rate
+        self._rate = rate
+        self.optimizer.step()
+
+    def rate(self, step=None):
+        "Implement `lrate` above"
+        if step is None:
+            step = self._step
+        return self.factor * \
+               (self.model_size ** (-0.5) *
+                min(step ** (-0.5), step * self.warmup ** (-1.5)))
+
+def get_std_opt(model):
+    return NoamOpt(model.src_embed[0].d_model, 2, 4000,
+            torch.optim.Adam(model.parameters(), lr=0, betas=(0.9, 0.98), eps=1e-9))
+
 def str2bool(v):
     if isinstance(v, bool):
        return v
@@ -161,7 +194,7 @@ if __name__ == '__main__':
 
     parser.add_argument("--load_model", type = str, default=None, help = 'if specified model name, load pre-trained model')
     # parser.add_argument("--bidirectional", type = str, default='false', help = 'if True, use bidirectional lstm')
-    parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
+    parser.add_argument("--load_data", type = str, default="SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
     parser.add_argument("--num_layers", type = int, default=2)
     parser.add_argument("--time_varying_features_name", type = str, default='prcp,srad,tmax,tmin,vp,SMAP_36km', help = "name of time varying features included")
     parser.add_argument("--static_features_name", type = str, default='elevation,slope,aspect,hillshade,clay,sand,bd,soc,LC', help = 'name of static features included')
@@ -171,6 +204,7 @@ if __name__ == '__main__':
     parser.add_argument("--d_model", type=int, default=16)
     parser.add_argument("--d_ff", type=int, default=64)
     parser.add_argument("--h", type=int, default=4)
+    parser.add_argument("--varying_learning_rate", type=str, default='false')
 
 
 
@@ -233,7 +267,11 @@ if __name__ == '__main__':
         criterion = Rsquare_loss
 
     # optimizer
-    optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    if str2bool(opt.varying_learning_rate):
+        optimizer = get_std_opt(model)
+    else:
+        optimizer = optim.Adam(model.parameters(), lr=1e-3)
+
 
 
 
