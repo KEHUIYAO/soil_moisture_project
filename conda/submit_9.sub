@@ -2,7 +2,7 @@ universe = vanilla
 executable = submit_9.sh
 output = $(Cluster)_$(Process).out
 
-transfer_input_files = environment.yml, ../src/train_transformer.py, ../src/load_data.py, ../src/transformer.py, ../data/Insitu_gap_filling_training_data_csv.zip
+transfer_input_files = environment.yml, ../src/train_transformer.py, ../src/load_data.py, ../src/transformer.py, ../data/Insitu_gap_filling_training_data.csv.zip
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
