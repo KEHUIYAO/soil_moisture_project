@@ -1,12 +1,14 @@
 import torch.nn as nn
 import torch
 import numpy as np
-
 import torch.nn.functional as F
 import math, copy, time
 from torch.autograd import Variable
 
 class EncoderDecoder(nn.Module):
+    """
+    Implement the transformer network
+    """
     def __init__(self, encoder, decoder, src_embed, tgt_embed, generator):
         super(EncoderDecoder, self).__init__()
         self.encoder = encoder
@@ -26,6 +28,9 @@ class EncoderDecoder(nn.Module):
 
 
 class Generator(nn.Module):
+    """
+    Project from a d_model dim vector to a scalar(final estimation)
+    """
     def __init__(self, d_model):
         super(Generator, self).__init__()
         self.proj = nn.Sequential(nn.Linear(d_model, d_model),
@@ -39,14 +44,13 @@ class Generator(nn.Module):
 def clones(module, N):
     """
     Produce N identical layers
-    :param module:
-    :param N:
-    :return:
     """
-
     return nn.ModuleList([copy.deepcopy(module) for _ in range(N)])
 
 class LayerNorm(nn.Module):
+    """
+    implement layernorm algorithm
+    """
     def __init__(self, features, eps=1e-6):
         super(LayerNorm, self).__init__()
         self.a_2 = nn.Parameter(torch.ones(features))
@@ -60,6 +64,10 @@ class LayerNorm(nn.Module):
 
 
 class SublayerConnection(nn.Module):
+    """
+    Glue layer, connnect a sublayer with a residual connection
+    and normalization
+    """
     def __init__(self, size, dropout):
         super(SublayerConnection, self).__init__()
         self.norm = LayerNorm(size)
@@ -70,6 +78,9 @@ class SublayerConnection(nn.Module):
 
 
 class Embedding(nn.Module):
+    """
+    Project the d_feature dim vector to d_model dim vector
+    """
     def __init__(self, d_feature, d_model):
         super(Embedding, self).__init__()
         self.d_model = d_model
@@ -99,6 +110,9 @@ class Encoder(nn.Module):
 
 
 class EncoderLayer(nn.Module):
+    """
+    Consists of a self attention layer and a feedforward layer
+    """
     def __init__(self, size, self_attn, feed_forward, dropout):
         super(EncoderLayer, self).__init__()
         self.self_attn = self_attn
@@ -111,6 +125,9 @@ class EncoderLayer(nn.Module):
         return self.sublayer[1](x, self.feed_forward)
 
 class Decoder(nn.Module):
+    """
+    Core decoder is a stack of N layers
+    """
     def __init__(self, layer, N ):
         super(Decoder, self).__init__()
         self.layers = clones(layer, N)
@@ -123,6 +140,10 @@ class Decoder(nn.Module):
 
 
 class DecoderLayer(nn.Module):
+    """
+    Consists of one self attention layer, one encoder-decoder attention layer,
+    and one feedforward layer
+    """
     def __init__(self, size, self_attn, src_attn, feed_forward, dropout):
         super(DecoderLayer, self).__init__()
         self.size = size
@@ -139,6 +160,9 @@ class DecoderLayer(nn.Module):
 
 
 def subsequent_mask(mask):
+    """
+    mask future obs
+    """
     device = mask.device
     size = mask.size(-2)
     attn_shape = (1, size, size)
@@ -149,6 +173,9 @@ def subsequent_mask(mask):
 
 
 def missing_mask(mask):
+    """
+    mask obs based on mask
+    """
     # mask has dimension (batch_size, seq_len, 1)
     device = mask.device
     mask = mask.squeeze(2)
@@ -159,8 +186,15 @@ def missing_mask(mask):
     missing_mask.masked_fill_(off_diagonal_mask == 1, 0)
     return missing_mask.unsqueeze(0) == 1
 
-def make_std_mask(mask):
-    total_mask =  subsequent_mask(mask) & missing_mask(mask)
+def make_std_mask(mask, see_future):
+    """
+    Combine missing_mask and subsequent_mask together
+    """
+    if not see_future:
+        total_mask =  subsequent_mask(mask) & missing_mask(mask)
+    else:
+        total_mask = missing_mask(mask)
+
     return total_mask.type_as(mask.data)
 
 
@@ -168,6 +202,9 @@ def make_std_mask(mask):
 
 
 def attention(query, key, value, mask=None, dropout=None):
+    """
+    Core attention function
+    """
     d_k = query.size(-1)
     scores = torch.matmul(query, key.transpose(-2, -1)) / math.sqrt(d_k)
     if mask is not None:
@@ -179,6 +216,9 @@ def attention(query, key, value, mask=None, dropout=None):
 
 
 class MultiHeadedAttention(nn.Module):
+    """
+    Sublayer: multi-head attention
+    """
     def __init__(self, h, d_model, dropout=0.1):
         super(MultiHeadedAttention, self).__init__()
         assert d_model % h == 0
@@ -205,6 +245,9 @@ class MultiHeadedAttention(nn.Module):
         return self.linears[-1](x)
 
 class PositionwiseFeedForward(nn.Module):
+    """
+    Sublayer: Feedforward net
+    """
     def __init__(self, d_model, d_ff, dropout=0.1):
         super(PositionwiseFeedForward, self).__init__()
         self.w_1 = nn.Linear(d_model, d_ff)
@@ -244,6 +287,9 @@ class PositionalEncoding(nn.Module):
 
 
 def make_model(d_feature, N = 1, d_model=6, d_ff=2, h=2, dropout=0.1):
+    """
+    assemble the transformer neural net
+    """
     c = copy.deepcopy
     attn = MultiHeadedAttention(h, d_model)
     ff = PositionwiseFeedForward(d_model, d_ff, dropout)
@@ -257,9 +303,6 @@ def make_model(d_feature, N = 1, d_model=6, d_ff=2, h=2, dropout=0.1):
     )
 
     return model
-
-
-
 
 
 if __name__ == "__main__":
