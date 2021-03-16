@@ -205,7 +205,7 @@ if __name__ == '__main__':
     parser.add_argument("--save_figure", type = str, default='model.png', help = "file to save the training and validation performance through epochs")
     parser.add_argument("--save_entire_model", type = str, default='model_entire.pt', help = "file to save the entire model")
     parser.add_argument("--load_model", type = str, default=None, help = 'if specified model name, load pre-trained model')
-    parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
+    parser.add_argument("--load_data", type = str, default="SMAP_Climate_In_Situ_Kenaston_training_data.csv", help = 'file name of the dataset')
     parser.add_argument("--num_layers", type = int, default=2)
     parser.add_argument("--time_varying_features_name", type = str, default='prcp,srad,tmax,tmin,vp,SMAP_36km', help = "name of time varying features included")
     parser.add_argument("--static_features_name", type = str, default='elevation,slope,aspect,hillshade,clay,sand,bd,soc,LC', help = 'name of static features included')

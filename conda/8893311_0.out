@@ -1,625 +1,0 @@
-Date:  Mon Mar 15 10:48:47 CDT 2021
-Host:  gpu2001.chtc.wisc.edu
-System:  Linux x86_64 GNU/Linux
-GPU: 
-Archive:  SMAP_Climate_In_Situ_Kenaston_training_data.csv.zip
-  inflating: SMAP_Climate_In_Situ_Kenaston_training_data.csv  
-  inflating: __MACOSX/._SMAP_Climate_In_Situ_Kenaston_training_data.csv  
-PREFIX=/var/lib/condor/execute/slot1/dir_103495/miniconda3
-Unpacking payload ...
-Collecting package metadata (current_repodata.json): ...working... done
-Solving environment: ...working... done
-
-## Package Plan ##
-
-  environment location: /var/lib/condor/execute/slot1/dir_103495/miniconda3
-
-  added / updated specs:
-    - _libgcc_mutex==0.1=main
-    - asn1crypto==1.3.0=py37_0
-    - ca-certificates==2020.1.1=0
-    - certifi==2019.11.28=py37_0
-    - cffi==1.14.0=py37h2e261b9_0
-    - chardet==3.0.4=py37_1003
-    - conda-package-handling==1.6.0=py37h7b6447c_0
-    - conda==4.8.2=py37_0
-    - cryptography==2.8=py37h1ba5d50_0
-    - idna==2.8=py37_0
-    - ld_impl_linux-64==2.33.1=h53a641e_7
-    - libedit==3.1.20181209=hc058e9b_0
-    - libffi==3.2.1=hd88cf55_4
-    - libgcc-ng==9.1.0=hdf63c60_0
-    - libstdcxx-ng==9.1.0=hdf63c60_0
-    - ncurses==6.2=he6710b0_0
-    - openssl==1.1.1d=h7b6447c_4
-    - pip==20.0.2=py37_1
-    - pycosat==0.6.3=py37h7b6447c_0
-    - pycparser==2.19=py37_0
-    - pyopenssl==19.1.0=py37_0
-    - pysocks==1.7.1=py37_0
-    - python==3.7.6=h0371630_2
-    - readline==7.0=h7b6447c_5
-    - requests==2.22.0=py37_1
-    - ruamel_yaml==0.15.87=py37h7b6447c_0
-    - setuptools==45.2.0=py37_0
-    - six==1.14.0=py37_0
-    - sqlite==3.31.1=h7b6447c_0
-    - tk==8.6.8=hbc83047_0
-    - tqdm==4.42.1=py_0
-    - urllib3==1.25.8=py37_0
-    - wheel==0.34.2=py37_0
-    - xz==5.2.4=h14c3975_4
-    - yaml==0.1.7=had09818_2
-    - zlib==1.2.11=h7b6447c_3
-
-
-The following NEW packages will be INSTALLED:
-
-  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
-  asn1crypto         pkgs/main/linux-64::asn1crypto-1.3.0-py37_0
-  ca-certificates    pkgs/main/linux-64::ca-certificates-2020.1.1-0
-  certifi            pkgs/main/linux-64::certifi-2019.11.28-py37_0
-  cffi               pkgs/main/linux-64::cffi-1.14.0-py37h2e261b9_0
-  chardet            pkgs/main/linux-64::chardet-3.0.4-py37_1003
-  conda              pkgs/main/linux-64::conda-4.8.2-py37_0
-  conda-package-han~ pkgs/main/linux-64::conda-package-handling-1.6.0-py37h7b6447c_0
-  cryptography       pkgs/main/linux-64::cryptography-2.8-py37h1ba5d50_0
-  idna               pkgs/main/linux-64::idna-2.8-py37_0
-  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.33.1-h53a641e_7
-  libedit            pkgs/main/linux-64::libedit-3.1.20181209-hc058e9b_0
-  libffi             pkgs/main/linux-64::libffi-3.2.1-hd88cf55_4
-  libgcc-ng          pkgs/main/linux-64::libgcc-ng-9.1.0-hdf63c60_0
-  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-9.1.0-hdf63c60_0
-  ncurses            pkgs/main/linux-64::ncurses-6.2-he6710b0_0
-  openssl            pkgs/main/linux-64::openssl-1.1.1d-h7b6447c_4
-  pip                pkgs/main/linux-64::pip-20.0.2-py37_1
-  pycosat            pkgs/main/linux-64::pycosat-0.6.3-py37h7b6447c_0
-  pycparser          pkgs/main/linux-64::pycparser-2.19-py37_0
-  pyopenssl          pkgs/main/linux-64::pyopenssl-19.1.0-py37_0
-  pysocks            pkgs/main/linux-64::pysocks-1.7.1-py37_0
-  python             pkgs/main/linux-64::python-3.7.6-h0371630_2
-  readline           pkgs/main/linux-64::readline-7.0-h7b6447c_5
-  requests           pkgs/main/linux-64::requests-2.22.0-py37_1
-  ruamel_yaml        pkgs/main/linux-64::ruamel_yaml-0.15.87-py37h7b6447c_0
-  setuptools         pkgs/main/linux-64::setuptools-45.2.0-py37_0
-  six                pkgs/main/linux-64::six-1.14.0-py37_0
-  sqlite             pkgs/main/linux-64::sqlite-3.31.1-h7b6447c_0
-  tk                 pkgs/main/linux-64::tk-8.6.8-hbc83047_0
-  tqdm               pkgs/main/noarch::tqdm-4.42.1-py_0
-  urllib3            pkgs/main/linux-64::urllib3-1.25.8-py37_0
-  wheel              pkgs/main/linux-64::wheel-0.34.2-py37_0
-  xz                 pkgs/main/linux-64::xz-5.2.4-h14c3975_4
-  yaml               pkgs/main/linux-64::yaml-0.1.7-had09818_2
-  zlib               pkgs/main/linux-64::zlib-1.2.11-h7b6447c_3
-
-
-Preparing transaction: ...working... done
-Executing transaction: ...working... done
-installation finished.
-Collecting package metadata (current_repodata.json): ...working... done
-Solving environment: ...working... failed with initial frozen solve. Retrying with flexible solve.
-Collecting package metadata (repodata.json): ...working... done
-Solving environment: ...working... done
-
-## Package Plan ##
-
-  environment location: /var/lib/condor/execute/slot1/dir_103495/miniconda3
-
-  added / updated specs:
-    - conda=4.8.3
-
-
-The following packages will be downloaded:
-
-    package                    |            build
-    ---------------------------|-----------------
-    ca-certificates-2021.1.19  |       h06a4308_1         118 KB
-    certifi-2020.12.5          |   py37h06a4308_0         141 KB
-    conda-4.8.3                |           py37_0         2.8 MB
-    openssl-1.1.1j             |       h27cfd23_0         2.5 MB
-    ------------------------------------------------------------
-                                           Total:         5.6 MB
-
-The following packages will be UPDATED:
-
-  ca-certificates                                2020.1.1-0 --> 2021.1.19-h06a4308_1
-  certifi                                 2019.11.28-py37_0 --> 2020.12.5-py37h06a4308_0
-  conda                                        4.8.2-py37_0 --> 4.8.3-py37_0
-  openssl                                 1.1.1d-h7b6447c_4 --> 1.1.1j-h27cfd23_0
-
-
-Proceed ([y]/n)? 
-
-Downloading and Extracting Packages
-certifi-2020.12.5    | 141 KB    |            |   0% certifi-2020.12.5    | 141 KB    | #####6     |  57% certifi-2020.12.5    | 141 KB    | ########## | 100% 
-conda-4.8.3          | 2.8 MB    |            |   0% conda-4.8.3          | 2.8 MB    | ########## | 100% 
-openssl-1.1.1j       | 2.5 MB    |            |   0% openssl-1.1.1j       | 2.5 MB    | ######5    |  65% openssl-1.1.1j       | 2.5 MB    | ########## | 100% 
-ca-certificates-2021 | 118 KB    |            |   0% ca-certificates-2021 | 118 KB    | ########## | 100% 
-Preparing transaction: ...working... done
-Verifying transaction: ...working... done
-Executing transaction: ...working... done
-Collecting package metadata (repodata.json): ...working... done
-Solving environment: ...working... done
-
-Downloading and Extracting Packages
-kiwisolver-1.3.1     | 80 KB     |            |   0% kiwisolver-1.3.1     | 80 KB     | ##         |  20% kiwisolver-1.3.1     | 80 KB     | ########## | 100% 
-ninja-1.10.2         | 1.4 MB    |            |   0% ninja-1.10.2         | 1.4 MB    | ########## | 100% 
-fontconfig-2.13.1    | 250 KB    |            |   0% fontconfig-2.13.1    | 250 KB    | ########## | 100% 
-pyqt-5.9.2           | 4.5 MB    |            |   0% pyqt-5.9.2           | 4.5 MB    | ########7  |  87% pyqt-5.9.2           | 4.5 MB    | ########## | 100% 
-python-3.7.10        | 45.2 MB   |            |   0% python-3.7.10        | 45.2 MB   | #1         |  11% python-3.7.10        | 45.2 MB   | ###1       |  31% python-3.7.10        | 45.2 MB   | #####2     |  52% python-3.7.10        | 45.2 MB   | #######6   |  77% python-3.7.10        | 45.2 MB   | #########4 |  94% python-3.7.10        | 45.2 MB   | ########## | 100% 
-tornado-6.1          | 589 KB    |            |   0% tornado-6.1          | 589 KB    | ########## | 100% 
-glib-2.67.4          | 3.0 MB    |            |   0% glib-2.67.4          | 3.0 MB    | ########## | 100% 
-gst-plugins-base-1.1 | 4.9 MB    |            |   0% gst-plugins-base-1.1 | 4.9 MB    | #######9   |  80% gst-plugins-base-1.1 | 4.9 MB    | ########## | 100% 
-pcre-8.44            | 212 KB    |            |   0% pcre-8.44            | 212 KB    | ########## | 100% 
-lcms2-2.11           | 307 KB    |            |   0% lcms2-2.11           | 307 KB    | ########## | 100% 
-lz4-c-1.9.3          | 186 KB    |            |   0% lz4-c-1.9.3          | 186 KB    | ########## | 100% 
-libxml2-2.9.10       | 1.2 MB    |            |   0% libxml2-2.9.10       | 1.2 MB    | ########## | 100% 
-icu-58.2             | 10.5 MB   |            |   0% icu-58.2             | 10.5 MB   | ####4      |  44% icu-58.2             | 10.5 MB   | ########## | 100% 
-ncurses-6.2          | 817 KB    |            |   0% ncurses-6.2          | 817 KB    | ########## | 100% 
-libwebp-base-1.2.0   | 437 KB    |            |   0% libwebp-base-1.2.0   | 437 KB    | ########## | 100% 
-qt-5.9.7             | 68.5 MB   |            |   0% qt-5.9.7             | 68.5 MB   | 1          |   2% qt-5.9.7             | 68.5 MB   | #4         |  15% qt-5.9.7             | 68.5 MB   | ##8        |  29% qt-5.9.7             | 68.5 MB   | ####3      |  43% qt-5.9.7             | 68.5 MB   | #####5     |  56% qt-5.9.7             | 68.5 MB   | ######9    |  70% qt-5.9.7             | 68.5 MB   | ########3  |  83% qt-5.9.7             | 68.5 MB   | #########6 |  96% qt-5.9.7             | 68.5 MB   | ########## | 100% 
-numpy-base-1.19.2    | 4.1 MB    |            |   0% numpy-base-1.19.2    | 4.1 MB    | ########## | 100% 
-pip-21.0.1           | 1.8 MB    |            |   0% pip-21.0.1           | 1.8 MB    | ########## | 100% 
-pandas-1.2.3         | 8.5 MB    |            |   0% pandas-1.2.3         | 8.5 MB    | #######2   |  72% pandas-1.2.3         | 8.5 MB    | ########## | 100% 
-numpy-1.19.2         | 22 KB     |            |   0% numpy-1.19.2         | 22 KB     | ########## | 100% 
-freetype-2.10.4      | 596 KB    |            |   0% freetype-2.10.4      | 596 KB    | ########## | 100% 
-zstd-1.4.5           | 619 KB    |            |   0% zstd-1.4.5           | 619 KB    | ########## | 100% 
-sqlite-3.33.0        | 1.1 MB    |            |   0% sqlite-3.33.0        | 1.1 MB    | ########## | 100% 
-cycler-0.10.0        | 13 KB     |            |   0% cycler-0.10.0        | 13 KB     | ########## | 100% 
-six-1.15.0           | 27 KB     |            |   0% six-1.15.0           | 27 KB     | ########## | 100% 
-libxcb-1.14          | 505 KB    |            |   0% libxcb-1.14          | 505 KB    | ########## | 100% 
-libpng-1.6.37        | 278 KB    |            |   0% libpng-1.6.37        | 278 KB    | ########## | 100% 
-pyparsing-2.4.7      | 59 KB     |            |   0% pyparsing-2.4.7      | 59 KB     | ########## | 100% 
-torchvision-0.6.1    | 11.7 MB   |            |   0% torchvision-0.6.1    | 11.7 MB   |            |   0% torchvision-0.6.1    | 11.7 MB   | 6          |   6% torchvision-0.6.1    | 11.7 MB   | #####4     |  54% torchvision-0.6.1    | 11.7 MB   | ########## | 100% 
-matplotlib-base-3.3. | 5.1 MB    |            |   0% matplotlib-base-3.3. | 5.1 MB    | ###5       |  36% matplotlib-base-3.3. | 5.1 MB    | ########## | 100% 
-python-dateutil-2.8. | 221 KB    |            |   0% python-dateutil-2.8. | 221 KB    | ########## | 100% 
-pillow-8.1.2         | 624 KB    |            |   0% pillow-8.1.2         | 624 KB    | ########## | 100% 
-mkl-service-2.3.0    | 52 KB     |            |   0% mkl-service-2.3.0    | 52 KB     | ########## | 100% 
-blas-1.0             | 6 KB      |            |   0% blas-1.0             | 6 KB      | ########## | 100% 
-tk-8.6.10            | 3.0 MB    |            |   0% tk-8.6.10            | 3.0 MB    | ########## | 100% 
-dbus-1.13.18         | 504 KB    |            |   0% dbus-1.13.18         | 504 KB    | ########## | 100% 
-setuptools-52.0.0    | 710 KB    |            |   0% setuptools-52.0.0    | 710 KB    | ########## | 100% 
-libtiff-4.2.0        | 463 KB    |            |   0% libtiff-4.2.0        | 463 KB    | ########## | 100% 
-intel-openmp-2020.2  | 786 KB    |            |   0% intel-openmp-2020.2  | 786 KB    | ########## | 100% 
-jpeg-9b              | 214 KB    |            |   0% jpeg-9b              | 214 KB    | ########## | 100% 
-libedit-3.1.20191231 | 116 KB    |            |   0% libedit-3.1.20191231 | 116 KB    | ########## | 100% 
-xz-5.2.5             | 341 KB    |            |   0% xz-5.2.5             | 341 KB    | ########## | 100% 
-gstreamer-1.14.0     | 3.2 MB    |            |   0% gstreamer-1.14.0     | 3.2 MB    | ########9  |  90% gstreamer-1.14.0     | 3.2 MB    | ########## | 100% 
-cudatoolkit-10.2.89  | 365.1 MB  |            |   0% cudatoolkit-10.2.89  | 365.1 MB  | 1          |   1% cudatoolkit-10.2.89  | 365.1 MB  | 3          |   4% cudatoolkit-10.2.89  | 365.1 MB  | 6          |   6% cudatoolkit-10.2.89  | 365.1 MB  | 9          |   9% cudatoolkit-10.2.89  | 365.1 MB  | #1         |  12% cudatoolkit-10.2.89  | 365.1 MB  | #3         |  14% cudatoolkit-10.2.89  | 365.1 MB  | #5         |  16% cudatoolkit-10.2.89  | 365.1 MB  | #7         |  18% cudatoolkit-10.2.89  | 365.1 MB  | ##         |  20% cudatoolkit-10.2.89  | 365.1 MB  | ##2        |  22% cudatoolkit-10.2.89  | 365.1 MB  | ##4        |  24% cudatoolkit-10.2.89  | 365.1 MB  | ##6        |  27% cudatoolkit-10.2.89  | 365.1 MB  | ##9        |  29% cudatoolkit-10.2.89  | 365.1 MB  | ###1       |  32% cudatoolkit-10.2.89  | 365.1 MB  | ###3       |  34% cudatoolkit-10.2.89  | 365.1 MB  | ###6       |  36% cudatoolkit-10.2.89  | 365.1 MB  | ###9       |  39% cudatoolkit-10.2.89  | 365.1 MB  | ####1      |  41% cudatoolkit-10.2.89  | 365.1 MB  | ####4      |  45% cudatoolkit-10.2.89  | 365.1 MB  | ####8      |  49% cudatoolkit-10.2.89  | 365.1 MB  | #####2     |  52% cudatoolkit-10.2.89  | 365.1 MB  | #####5     |  56% cudatoolkit-10.2.89  | 365.1 MB  | #####8     |  59% cudatoolkit-10.2.89  | 365.1 MB  | ######1    |  62% cudatoolkit-10.2.89  | 365.1 MB  | ######4    |  65% cudatoolkit-10.2.89  | 365.1 MB  | ######7    |  68% cudatoolkit-10.2.89  | 365.1 MB  | #######    |  70% cudatoolkit-10.2.89  | 365.1 MB  | #######3   |  73% cudatoolkit-10.2.89  | 365.1 MB  | #######6   |  76% cudatoolkit-10.2.89  | 365.1 MB  | #######9   |  79% cudatoolkit-10.2.89  | 365.1 MB  | ########2  |  82% cudatoolkit-10.2.89  | 365.1 MB  | ########5  |  85% cudatoolkit-10.2.89  | 365.1 MB  | ########8  |  88% cudatoolkit-10.2.89  | 365.1 MB  | #########1 |  91% cudatoolkit-10.2.89  | 365.1 MB  | #########4 |  94% cudatoolkit-10.2.89  | 365.1 MB  | #########7 |  97% cudatoolkit-10.2.89  | 365.1 MB  | ########## | 100% 
-matplotlib-3.3.4     | 26 KB     |            |   0% matplotlib-3.3.4     | 26 KB     | ########## | 100% 
-pytorch-1.5.1        | 424.3 MB  |            |   0% pytorch-1.5.1        | 424.3 MB  |            |   0% pytorch-1.5.1        | 424.3 MB  |            |   0% pytorch-1.5.1        | 424.3 MB  | 1          |   2% pytorch-1.5.1        | 424.3 MB  | 3          |   4% pytorch-1.5.1        | 424.3 MB  | 6          |   6% pytorch-1.5.1        | 424.3 MB  | 8          |   9% pytorch-1.5.1        | 424.3 MB  | #1         |  11% pytorch-1.5.1        | 424.3 MB  | #3         |  14% pytorch-1.5.1        | 424.3 MB  | #6         |  16% pytorch-1.5.1        | 424.3 MB  | #8         |  18% pytorch-1.5.1        | 424.3 MB  | ##         |  20% pytorch-1.5.1        | 424.3 MB  | ##2        |  23% pytorch-1.5.1        | 424.3 MB  | ##4        |  25% pytorch-1.5.1        | 424.3 MB  | ##7        |  28% pytorch-1.5.1        | 424.3 MB  | ##9        |  30% pytorch-1.5.1        | 424.3 MB  | ###2       |  32% pytorch-1.5.1        | 424.3 MB  | ###4       |  34% pytorch-1.5.1        | 424.3 MB  | ###6       |  36% pytorch-1.5.1        | 424.3 MB  | ###8       |  39% pytorch-1.5.1        | 424.3 MB  | ####1      |  41% pytorch-1.5.1        | 424.3 MB  | ####3      |  44% pytorch-1.5.1        | 424.3 MB  | ####6      |  46% pytorch-1.5.1        | 424.3 MB  | ####8      |  48% pytorch-1.5.1        | 424.3 MB  | #####      |  51% pytorch-1.5.1        | 424.3 MB  | #####2     |  52% pytorch-1.5.1        | 424.3 MB  | #####4     |  55% pytorch-1.5.1        | 424.3 MB  | #####7     |  57% pytorch-1.5.1        | 424.3 MB  | #####9     |  60% pytorch-1.5.1        | 424.3 MB  | ######1    |  62% pytorch-1.5.1        | 424.3 MB  | ######4    |  64% pytorch-1.5.1        | 424.3 MB  | ######5    |  66% pytorch-1.5.1        | 424.3 MB  | ######8    |  68% pytorch-1.5.1        | 424.3 MB  | #######    |  70% pytorch-1.5.1        | 424.3 MB  | #######2   |  72% pytorch-1.5.1        | 424.3 MB  | #######4   |  74% pytorch-1.5.1        | 424.3 MB  | #######6   |  77% pytorch-1.5.1        | 424.3 MB  | #######8   |  79% pytorch-1.5.1        | 424.3 MB  | ########1  |  81% pytorch-1.5.1        | 424.3 MB  | ########3  |  83% pytorch-1.5.1        | 424.3 MB  | ########5  |  85% pytorch-1.5.1        | 424.3 MB  | ########7  |  88% pytorch-1.5.1        | 424.3 MB  | ########9  |  90% pytorch-1.5.1        | 424.3 MB  | #########2 |  92% pytorch-1.5.1        | 424.3 MB  | #########4 |  94% pytorch-1.5.1        | 424.3 MB  | #########6 |  97% pytorch-1.5.1        | 424.3 MB  | #########9 |  99% pytorch-1.5.1        | 424.3 MB  | ########## | 100% 
-libuuid-1.0.3        | 15 KB     |            |   0% libuuid-1.0.3        | 15 KB     | ########## | 100% 
-mkl_random-1.1.1     | 322 KB    |            |   0% mkl_random-1.1.1     | 322 KB    | ########## | 100% 
-olefile-0.46         | 50 KB     |            |   0% olefile-0.46         | 50 KB     | ########## | 100% 
-mkl_fft-1.3.0        | 167 KB    |            |   0% mkl_fft-1.3.0        | 167 KB    | ########## | 100% 
-libffi-3.3           | 50 KB     |            |   0% libffi-3.3           | 50 KB     | ########## | 100% 
-expat-2.2.10         | 153 KB    |            |   0% expat-2.2.10         | 153 KB    | ########## | 100% 
-pytz-2021.1          | 181 KB    |            |   0% pytz-2021.1          | 181 KB    | ########## | 100% 
-mkl-2020.2           | 138.3 MB  |            |   0% mkl-2020.2           | 138.3 MB  | 3          |   3% mkl-2020.2           | 138.3 MB  | 9          |  10% mkl-2020.2           | 138.3 MB  | #6         |  17% mkl-2020.2           | 138.3 MB  | ##2        |  23% mkl-2020.2           | 138.3 MB  | ##9        |  29% mkl-2020.2           | 138.3 MB  | ###5       |  36% mkl-2020.2           | 138.3 MB  | ####2      |  43% mkl-2020.2           | 138.3 MB  | ####9      |  49% mkl-2020.2           | 138.3 MB  | #####5     |  55% mkl-2020.2           | 138.3 MB  | ######1    |  62% mkl-2020.2           | 138.3 MB  | ######7    |  68% mkl-2020.2           | 138.3 MB  | #######6   |  76% mkl-2020.2           | 138.3 MB  | ########2  |  83% mkl-2020.2           | 138.3 MB  | ########9  |  90% mkl-2020.2           | 138.3 MB  | #########6 |  96% mkl-2020.2           | 138.3 MB  | ########## | 100% 
-wheel-0.36.2         | 33 KB     |            |   0% wheel-0.36.2         | 33 KB     | ########## | 100% 
-readline-8.1         | 362 KB    |            |   0% readline-8.1         | 362 KB    | ########## | 100% 
-sip-4.19.8           | 274 KB    |            |   0% sip-4.19.8           | 274 KB    | ########## | 100% 
-Preparing transaction: ...working... done
-Verifying transaction: ...working... done
-Executing transaction: ...working... done
-#
-# To activate this environment, use
-#
-#     $ conda activate pytorch-gpu
-#
-# To deactivate an active environment, use
-#
-#     $ conda deactivate
-
-# packages in environment at /var/lib/condor/execute/slot1/dir_103495/miniconda3/envs/pytorch-gpu:
-#
-# Name                    Version                   Build  Channel
-_libgcc_mutex             0.1                        main  
-blas                      1.0                         mkl  
-ca-certificates           2021.1.19            h06a4308_1  
-certifi                   2020.12.5        py37h06a4308_0  
-cudatoolkit               10.2.89              hfd86e86_1  
-cycler                    0.10.0                   py37_0  
-dbus                      1.13.18              hb2f20db_0  
-expat                     2.2.10               he6710b0_2  
-fontconfig                2.13.1               h6c09931_0  
-freetype                  2.10.4               h5ab3b9f_0  
-glib                      2.67.4               h36276a3_1  
-gst-plugins-base          1.14.0               h8213a91_2  
-gstreamer                 1.14.0               h28cd5cc_2  
-icu                       58.2                 he6710b0_3  
-intel-openmp              2020.2                      254  
-jpeg                      9b                   h024ee3a_2  
-kiwisolver                1.3.1            py37h2531618_0  
-lcms2                     2.11                 h396b838_0  
-ld_impl_linux-64          2.33.1               h53a641e_7  
-libedit                   3.1.20191231         h14c3975_1  
-libffi                    3.3                  he6710b0_2  
-libgcc-ng                 9.1.0                hdf63c60_0  
-libpng                    1.6.37               hbc83047_0  
-libstdcxx-ng              9.1.0                hdf63c60_0  
-libtiff                   4.2.0                h3942068_0  
-libuuid                   1.0.3                h1bed415_2  
-libwebp-base              1.2.0                h27cfd23_0  
-libxcb                    1.14                 h7b6447c_0  
-libxml2                   2.9.10               hb55368b_3  
-lz4-c                     1.9.3                h2531618_0  
-matplotlib                3.3.4            py37h06a4308_0  
-matplotlib-base           3.3.4            py37h62a2d02_0  
-mkl                       2020.2                      256  
-mkl-service               2.3.0            py37he8ac12f_0  
-mkl_fft                   1.3.0            py37h54f3939_0  
-mkl_random                1.1.1            py37h0573a6f_0  
-ncurses                   6.2                  he6710b0_1  
-ninja                     1.10.2           py37hff7bd54_0  
-numpy                     1.19.2           py37h54aff64_0  
-numpy-base                1.19.2           py37hfa32c7d_0  
-olefile                   0.46                     py37_0  
-openssl                   1.1.1j               h27cfd23_0  
-pandas                    1.2.3            py37ha9443f7_0  
-pcre                      8.44                 he6710b0_0  
-pillow                    8.1.2            py37he98fc37_0  
-pip                       21.0.1           py37h06a4308_0  
-pyparsing                 2.4.7              pyhd3eb1b0_0  
-pyqt                      5.9.2            py37h05f1152_2  
-python                    3.7.10               hdb3f193_0  
-python-dateutil           2.8.1              pyhd3eb1b0_0  
-pytorch                   1.5.1           py3.7_cuda10.2.89_cudnn7.6.5_0    pytorch
-pytz                      2021.1             pyhd3eb1b0_0  
-qt                        5.9.7                h5867ecd_1  
-readline                  8.1                  h27cfd23_0  
-setuptools                52.0.0           py37h06a4308_0  
-sip                       4.19.8           py37hf484d3e_0  
-six                       1.15.0           py37h06a4308_0  
-sqlite                    3.33.0               h62c20be_0  
-tk                        8.6.10               hbc83047_0  
-torchvision               0.6.1                py37_cu102    pytorch
-tornado                   6.1              py37h27cfd23_0  
-wheel                     0.36.2             pyhd3eb1b0_0  
-xz                        5.2.5                h7b6447c_0  
-zlib                      1.2.11               h7b6447c_3  
-zstd                      1.4.5                h9ceee32_0  
-PyTorch version: 1.5.1
-CUDA device: Tesla P100-PCIE-16GB
-I am running on the cuda:0
-The model has 16,545 trainable parameters
-Epoch: 01 | Time: 1m 10s
-	Train Loss: 0.00818941 | Train PPL: 1.00822304
-	 Val. Loss: 0.00464179 |  Val. PPL: 1.00465258
-rsquare is 0.348998
-Epoch: 02 | Time: 1m 5s
-	Train Loss: 0.00416144 | Train PPL: 1.00417011
-	 Val. Loss: 0.00281754 |  Val. PPL: 1.00282151
-rsquare is 0.582471
-Epoch: 03 | Time: 1m 5s
-	Train Loss: 0.00343942 | Train PPL: 1.00344535
-	 Val. Loss: 0.00237089 |  Val. PPL: 1.00237370
-rsquare is 0.625378
-Epoch: 04 | Time: 1m 6s
-	Train Loss: 0.00307936 | Train PPL: 1.00308410
-	 Val. Loss: 0.00251741 |  Val. PPL: 1.00252058
-rsquare is 0.626532
-Epoch: 05 | Time: 1m 7s
-	Train Loss: 0.00288388 | Train PPL: 1.00288804
-	 Val. Loss: 0.00240472 |  Val. PPL: 1.00240761
-rsquare is 0.645943
-Epoch: 06 | Time: 1m 7s
-	Train Loss: 0.00266304 | Train PPL: 1.00266659
-	 Val. Loss: 0.00188318 |  Val. PPL: 1.00188495
-rsquare is 0.645745
-Epoch: 07 | Time: 1m 6s
-	Train Loss: 0.00238763 | Train PPL: 1.00239049
-	 Val. Loss: 0.00178454 |  Val. PPL: 1.00178614
-rsquare is 0.660511
-Epoch: 08 | Time: 1m 7s
-	Train Loss: 0.00217498 | Train PPL: 1.00217735
-	 Val. Loss: 0.00177006 |  Val. PPL: 1.00177163
-rsquare is 0.665668
-Epoch: 09 | Time: 1m 6s
-	Train Loss: 0.00197844 | Train PPL: 1.00198040
-	 Val. Loss: 0.00141782 |  Val. PPL: 1.00141883
-rsquare is 0.705025
-Epoch: 10 | Time: 1m 7s
-	Train Loss: 0.00178733 | Train PPL: 1.00178893
-	 Val. Loss: 0.00137407 |  Val. PPL: 1.00137501
-rsquare is 0.727715
-Epoch: 11 | Time: 1m 8s
-	Train Loss: 0.00167435 | Train PPL: 1.00167576
-	 Val. Loss: 0.00115013 |  Val. PPL: 1.00115079
-rsquare is 0.750763
-Epoch: 12 | Time: 1m 8s
-	Train Loss: 0.00156462 | Train PPL: 1.00156584
-	 Val. Loss: 0.00117706 |  Val. PPL: 1.00117775
-rsquare is 0.775170
-Epoch: 13 | Time: 1m 7s
-	Train Loss: 0.00150554 | Train PPL: 1.00150668
-	 Val. Loss: 0.00104695 |  Val. PPL: 1.00104750
-rsquare is 0.789782
-Epoch: 14 | Time: 1m 7s
-	Train Loss: 0.00146805 | Train PPL: 1.00146913
-	 Val. Loss: 0.00114664 |  Val. PPL: 1.00114730
-rsquare is 0.792893
-Epoch: 15 | Time: 1m 9s
-	Train Loss: 0.00138845 | Train PPL: 1.00138941
-	 Val. Loss: 0.00092959 |  Val. PPL: 1.00093002
-rsquare is 0.797824
-Epoch: 16 | Time: 1m 7s
-	Train Loss: 0.00136733 | Train PPL: 1.00136827
-	 Val. Loss: 0.00090967 |  Val. PPL: 1.00091009
-rsquare is 0.808330
-Epoch: 17 | Time: 1m 9s
-	Train Loss: 0.00131138 | Train PPL: 1.00131224
-	 Val. Loss: 0.00089764 |  Val. PPL: 1.00089805
-rsquare is 0.810396
-Epoch: 18 | Time: 1m 9s
-	Train Loss: 0.00128039 | Train PPL: 1.00128121
-	 Val. Loss: 0.00086919 |  Val. PPL: 1.00086956
-rsquare is 0.820823
-Epoch: 19 | Time: 1m 9s
-	Train Loss: 0.00125158 | Train PPL: 1.00125236
-	 Val. Loss: 0.00079723 |  Val. PPL: 1.00079755
-rsquare is 0.825787
-Epoch: 20 | Time: 1m 9s
-	Train Loss: 0.00125016 | Train PPL: 1.00125094
-	 Val. Loss: 0.00078469 |  Val. PPL: 1.00078500
-rsquare is 0.830183
-Epoch: 21 | Time: 1m 9s
-	Train Loss: 0.00119554 | Train PPL: 1.00119625
-	 Val. Loss: 0.00079566 |  Val. PPL: 1.00079597
-rsquare is 0.838024
-Epoch: 22 | Time: 1m 10s
-	Train Loss: 0.00118779 | Train PPL: 1.00118850
-	 Val. Loss: 0.00072851 |  Val. PPL: 1.00072878
-rsquare is 0.843374
-Epoch: 23 | Time: 1m 9s
-	Train Loss: 0.00113866 | Train PPL: 1.00113931
-	 Val. Loss: 0.00075242 |  Val. PPL: 1.00075270
-rsquare is 0.846926
-Epoch: 24 | Time: 1m 8s
-	Train Loss: 0.00112743 | Train PPL: 1.00112807
-	 Val. Loss: 0.00077334 |  Val. PPL: 1.00077364
-rsquare is 0.843235
-Epoch: 25 | Time: 1m 10s
-	Train Loss: 0.00112060 | Train PPL: 1.00112123
-	 Val. Loss: 0.00068932 |  Val. PPL: 1.00068956
-rsquare is 0.854665
-Epoch: 26 | Time: 1m 10s
-	Train Loss: 0.00108378 | Train PPL: 1.00108437
-	 Val. Loss: 0.00070628 |  Val. PPL: 1.00070653
-rsquare is 0.851861
-Epoch: 27 | Time: 1m 9s
-	Train Loss: 0.00110093 | Train PPL: 1.00110153
-	 Val. Loss: 0.00070197 |  Val. PPL: 1.00070222
-rsquare is 0.855081
-Epoch: 28 | Time: 1m 10s
-	Train Loss: 0.00106194 | Train PPL: 1.00106251
-	 Val. Loss: 0.00067895 |  Val. PPL: 1.00067918
-rsquare is 0.863003
-Epoch: 29 | Time: 1m 9s
-	Train Loss: 0.00105951 | Train PPL: 1.00106007
-	 Val. Loss: 0.00065040 |  Val. PPL: 1.00065062
-rsquare is 0.856098
-Epoch: 30 | Time: 1m 10s
-	Train Loss: 0.00104652 | Train PPL: 1.00104707
-	 Val. Loss: 0.00066314 |  Val. PPL: 1.00066336
-rsquare is 0.862758
-Epoch: 31 | Time: 1m 10s
-	Train Loss: 0.00103207 | Train PPL: 1.00103260
-	 Val. Loss: 0.00065604 |  Val. PPL: 1.00065626
-rsquare is 0.858295
-Epoch: 32 | Time: 1m 10s
-	Train Loss: 0.00102429 | Train PPL: 1.00102481
-	 Val. Loss: 0.00062213 |  Val. PPL: 1.00062232
-rsquare is 0.863688
-Epoch: 33 | Time: 1m 8s
-	Train Loss: 0.00101637 | Train PPL: 1.00101688
-	 Val. Loss: 0.00073868 |  Val. PPL: 1.00073896
-rsquare is 0.871408
-Epoch: 34 | Time: 1m 11s
-	Train Loss: 0.00101606 | Train PPL: 1.00101658
-	 Val. Loss: 0.00079128 |  Val. PPL: 1.00079160
-rsquare is 0.862530
-Epoch: 35 | Time: 1m 10s
-	Train Loss: 0.00099837 | Train PPL: 1.00099887
-	 Val. Loss: 0.00054194 |  Val. PPL: 1.00054208
-rsquare is 0.881268
-Epoch: 36 | Time: 1m 11s
-	Train Loss: 0.00097474 | Train PPL: 1.00097522
-	 Val. Loss: 0.00064465 |  Val. PPL: 1.00064485
-rsquare is 0.877045
-Epoch: 37 | Time: 1m 12s
-	Train Loss: 0.00098378 | Train PPL: 1.00098427
-	 Val. Loss: 0.00053419 |  Val. PPL: 1.00053433
-rsquare is 0.882114
-Epoch: 38 | Time: 1m 11s
-	Train Loss: 0.00094157 | Train PPL: 1.00094201
-	 Val. Loss: 0.00051408 |  Val. PPL: 1.00051421
-rsquare is 0.884896
-Epoch: 39 | Time: 1m 9s
-	Train Loss: 0.00093979 | Train PPL: 1.00094023
-	 Val. Loss: 0.00056415 |  Val. PPL: 1.00056431
-rsquare is 0.876937
-Epoch: 40 | Time: 1m 9s
-	Train Loss: 0.00094934 | Train PPL: 1.00094980
-	 Val. Loss: 0.00063172 |  Val. PPL: 1.00063192
-rsquare is 0.881260
-Epoch: 41 | Time: 1m 9s
-	Train Loss: 0.00092378 | Train PPL: 1.00092420
-	 Val. Loss: 0.00051463 |  Val. PPL: 1.00051476
-rsquare is 0.888719
-Epoch: 42 | Time: 1m 9s
-	Train Loss: 0.00094241 | Train PPL: 1.00094285
-	 Val. Loss: 0.00051589 |  Val. PPL: 1.00051602
-rsquare is 0.886748
-Epoch: 43 | Time: 1m 9s
-	Train Loss: 0.00093257 | Train PPL: 1.00093300
-	 Val. Loss: 0.00050519 |  Val. PPL: 1.00050532
-rsquare is 0.885800
-Epoch: 44 | Time: 1m 9s
-	Train Loss: 0.00091629 | Train PPL: 1.00091671
-	 Val. Loss: 0.00048431 |  Val. PPL: 1.00048443
-rsquare is 0.889616
-Epoch: 45 | Time: 1m 9s
-	Train Loss: 0.00091303 | Train PPL: 1.00091345
-	 Val. Loss: 0.00048958 |  Val. PPL: 1.00048970
-rsquare is 0.888672
-Epoch: 46 | Time: 1m 10s
-	Train Loss: 0.00089316 | Train PPL: 1.00089356
-	 Val. Loss: 0.00049223 |  Val. PPL: 1.00049235
-rsquare is 0.891969
-Epoch: 47 | Time: 1m 9s
-	Train Loss: 0.00088976 | Train PPL: 1.00089016
-	 Val. Loss: 0.00051571 |  Val. PPL: 1.00051584
-rsquare is 0.891284
-Epoch: 48 | Time: 1m 9s
-	Train Loss: 0.00089357 | Train PPL: 1.00089397
-	 Val. Loss: 0.00051318 |  Val. PPL: 1.00051332
-rsquare is 0.891701
-Epoch: 49 | Time: 1m 8s
-	Train Loss: 0.00091625 | Train PPL: 1.00091667
-	 Val. Loss: 0.00048229 |  Val. PPL: 1.00048240
-rsquare is 0.894633
-Epoch: 50 | Time: 1m 9s
-	Train Loss: 0.00088083 | Train PPL: 1.00088122
-	 Val. Loss: 0.00049623 |  Val. PPL: 1.00049635
-rsquare is 0.888398
-Epoch: 51 | Time: 1m 9s
-	Train Loss: 0.00087508 | Train PPL: 1.00087547
-	 Val. Loss: 0.00049439 |  Val. PPL: 1.00049451
-rsquare is 0.894447
-Epoch: 52 | Time: 1m 10s
-	Train Loss: 0.00086980 | Train PPL: 1.00087018
-	 Val. Loss: 0.00047885 |  Val. PPL: 1.00047896
-rsquare is 0.896581
-Epoch: 53 | Time: 1m 9s
-	Train Loss: 0.00086599 | Train PPL: 1.00086636
-	 Val. Loss: 0.00048565 |  Val. PPL: 1.00048577
-rsquare is 0.896727
-Epoch: 54 | Time: 1m 9s
-	Train Loss: 0.00086814 | Train PPL: 1.00086852
-	 Val. Loss: 0.00044957 |  Val. PPL: 1.00044967
-rsquare is 0.899372
-Epoch: 55 | Time: 1m 8s
-	Train Loss: 0.00086255 | Train PPL: 1.00086293
-	 Val. Loss: 0.00061269 |  Val. PPL: 1.00061288
-rsquare is 0.895858
-Epoch: 56 | Time: 1m 10s
-	Train Loss: 0.00083382 | Train PPL: 1.00083417
-	 Val. Loss: 0.00045398 |  Val. PPL: 1.00045408
-rsquare is 0.898707
-Epoch: 57 | Time: 1m 8s
-	Train Loss: 0.00083099 | Train PPL: 1.00083134
-	 Val. Loss: 0.00043760 |  Val. PPL: 1.00043770
-rsquare is 0.901681
-Epoch: 58 | Time: 1m 8s
-	Train Loss: 0.00084060 | Train PPL: 1.00084096
-	 Val. Loss: 0.00048980 |  Val. PPL: 1.00048992
-rsquare is 0.901035
-Epoch: 59 | Time: 1m 9s
-	Train Loss: 0.00084425 | Train PPL: 1.00084461
-	 Val. Loss: 0.00045382 |  Val. PPL: 1.00045393
-rsquare is 0.903582
-Epoch: 60 | Time: 1m 8s
-	Train Loss: 0.00084570 | Train PPL: 1.00084606
-	 Val. Loss: 0.00043961 |  Val. PPL: 1.00043970
-rsquare is 0.902887
-Epoch: 61 | Time: 1m 9s
-	Train Loss: 0.00080087 | Train PPL: 1.00080119
-	 Val. Loss: 0.00045541 |  Val. PPL: 1.00045552
-rsquare is 0.903579
-Epoch: 62 | Time: 1m 8s
-	Train Loss: 0.00082714 | Train PPL: 1.00082748
-	 Val. Loss: 0.00044928 |  Val. PPL: 1.00044938
-rsquare is 0.906455
-Epoch: 63 | Time: 1m 8s
-	Train Loss: 0.00080496 | Train PPL: 1.00080528
-	 Val. Loss: 0.00046325 |  Val. PPL: 1.00046336
-rsquare is 0.904702
-Epoch: 64 | Time: 1m 9s
-	Train Loss: 0.00082400 | Train PPL: 1.00082434
-	 Val. Loss: 0.00047298 |  Val. PPL: 1.00047309
-rsquare is 0.899694
-Epoch: 65 | Time: 1m 9s
-	Train Loss: 0.00081072 | Train PPL: 1.00081105
-	 Val. Loss: 0.00054882 |  Val. PPL: 1.00054897
-rsquare is 0.905087
-Epoch: 66 | Time: 1m 10s
-	Train Loss: 0.00080376 | Train PPL: 1.00080408
-	 Val. Loss: 0.00045230 |  Val. PPL: 1.00045240
-rsquare is 0.908352
-Epoch: 67 | Time: 1m 11s
-	Train Loss: 0.00079884 | Train PPL: 1.00079916
-	 Val. Loss: 0.00043343 |  Val. PPL: 1.00043353
-rsquare is 0.905054
-Epoch: 68 | Time: 1m 12s
-	Train Loss: 0.00079295 | Train PPL: 1.00079327
-	 Val. Loss: 0.00044284 |  Val. PPL: 1.00044294
-rsquare is 0.906353
-Epoch: 69 | Time: 1m 11s
-	Train Loss: 0.00079460 | Train PPL: 1.00079492
-	 Val. Loss: 0.00044204 |  Val. PPL: 1.00044214
-rsquare is 0.910165
-Epoch: 70 | Time: 1m 11s
-	Train Loss: 0.00077576 | Train PPL: 1.00077607
-	 Val. Loss: 0.00039750 |  Val. PPL: 1.00039758
-rsquare is 0.910289
-Epoch: 71 | Time: 1m 10s
-	Train Loss: 0.00079858 | Train PPL: 1.00079890
-	 Val. Loss: 0.00038782 |  Val. PPL: 1.00038790
-rsquare is 0.912588
-Epoch: 72 | Time: 1m 9s
-	Train Loss: 0.00080300 | Train PPL: 1.00080332
-	 Val. Loss: 0.00045661 |  Val. PPL: 1.00045672
-rsquare is 0.908609
-Epoch: 73 | Time: 1m 14s
-	Train Loss: 0.00079905 | Train PPL: 1.00079937
-	 Val. Loss: 0.00044196 |  Val. PPL: 1.00044206
-rsquare is 0.912492
-Epoch: 74 | Time: 1m 12s
-	Train Loss: 0.00077348 | Train PPL: 1.00077378
-	 Val. Loss: 0.00037164 |  Val. PPL: 1.00037171
-rsquare is 0.914668
-Epoch: 75 | Time: 1m 14s
-	Train Loss: 0.00077107 | Train PPL: 1.00077137
-	 Val. Loss: 0.00040522 |  Val. PPL: 1.00040531
-rsquare is 0.909633
-Epoch: 76 | Time: 1m 13s
-	Train Loss: 0.00077379 | Train PPL: 1.00077409
-	 Val. Loss: 0.00039570 |  Val. PPL: 1.00039578
-rsquare is 0.912816
-Epoch: 77 | Time: 1m 13s
-	Train Loss: 0.00078982 | Train PPL: 1.00079013
-	 Val. Loss: 0.00039555 |  Val. PPL: 1.00039563
-rsquare is 0.913600
-Epoch: 78 | Time: 1m 13s
-	Train Loss: 0.00077557 | Train PPL: 1.00077587
-	 Val. Loss: 0.00037297 |  Val. PPL: 1.00037304
-rsquare is 0.913709
-Epoch: 79 | Time: 1m 12s
-	Train Loss: 0.00076309 | Train PPL: 1.00076338
-	 Val. Loss: 0.00041824 |  Val. PPL: 1.00041832
-rsquare is 0.913366
-Epoch: 80 | Time: 1m 16s
-	Train Loss: 0.00077641 | Train PPL: 1.00077671
-	 Val. Loss: 0.00038156 |  Val. PPL: 1.00038164
-rsquare is 0.913308
-Epoch: 81 | Time: 1m 11s
-	Train Loss: 0.00078349 | Train PPL: 1.00078379
-	 Val. Loss: 0.00038278 |  Val. PPL: 1.00038285
-rsquare is 0.912768
-Epoch: 82 | Time: 1m 14s
-	Train Loss: 0.00077389 | Train PPL: 1.00077419
-	 Val. Loss: 0.00037562 |  Val. PPL: 1.00037569
-rsquare is 0.915261
-Epoch: 83 | Time: 1m 12s
-	Train Loss: 0.00076803 | Train PPL: 1.00076832
-	 Val. Loss: 0.00037328 |  Val. PPL: 1.00037335
-rsquare is 0.915052
-Epoch: 84 | Time: 1m 12s
-	Train Loss: 0.00074588 | Train PPL: 1.00074616
-	 Val. Loss: 0.00044478 |  Val. PPL: 1.00044488
-rsquare is 0.915082
-Epoch: 85 | Time: 1m 9s
-	Train Loss: 0.00073626 | Train PPL: 1.00073653
-	 Val. Loss: 0.00039198 |  Val. PPL: 1.00039205
-rsquare is 0.915056
