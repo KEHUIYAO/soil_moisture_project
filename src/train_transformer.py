@@ -131,7 +131,7 @@ def train(model, device, dataLoader, optimizer, criterion, clip=1):
 
         optimizer.zero_grad()
         src_mask = None
-        trt_mask = subsequent_mask(mask)
+        trt_mask = make_std_mask(mask)
         output = model(features, x, src_mask, trt_mask)
 
 
@@ -163,7 +163,7 @@ def evaluate(model,device, dataLoader, criterion):
             features = torch.cat([features, static], dim=2)
             # teacher force evaluation, which micmics the situation of temporal gap filling
             src_mask = None
-            tgt_mask = subsequent_mask(mask)
+            tgt_mask = make_std_mask(mask)
             output = model(features, x, src_mask, tgt_mask)
 
             mask = mask > 0

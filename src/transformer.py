@@ -139,17 +139,32 @@ class DecoderLayer(nn.Module):
 
 
 def subsequent_mask(mask):
+    device = mask.device
+    size = mask.size(-2)
+    attn_shape = (1, size, size)
+    subsequent_mask = np.triu(np.ones(attn_shape), k=1).astype('uint8')
+    subsequent_mask =  torch.from_numpy(subsequent_mask) == 0
+    subsequent_mask = subsequent_mask.to(device)
+    return subsequent_mask
+
+
+def missing_mask(mask):
     # mask has dimension (batch_size, seq_len, 1)
     device = mask.device
-    mask= mask.squeeze(2)
+    mask = mask.squeeze(2)
     size = mask.size(1)
-    subsequent_mask = torch.ones((size,size), device=device) * mask
-
+    missing_mask = torch.ones((size, size), device=device) * mask
     off_diagonal_mask = torch.diag(torch.ones(size - 1), diagonal=1)
     off_diagonal_mask = off_diagonal_mask.to(device)
-    subsequent_mask.masked_fill_(off_diagonal_mask==1, 0)
+    missing_mask.masked_fill_(off_diagonal_mask == 1, 0)
+    return missing_mask.unsqueeze(0) == 1
 
-    return subsequent_mask.unsqueeze(0)
+def make_std_mask(mask):
+    total_mask =  subsequent_mask(mask) & missing_mask(mask)
+    return total_mask.type_as(mask.data)
+
+
+
 
 
 def attention(query, key, value, mask=None, dropout=None):
@@ -253,7 +268,10 @@ if __name__ == "__main__":
     src = torch.rand((1,2,2))
     trt = torch.rand((1,2,1))
     trt_mask = torch.tensor([1,1]).view(1,-1,1)
-    trt_mask = subsequent_mask(trt_mask)
+    #trt_mask = missing_mask(trt_mask)
+    #trt_mask = subsequent_mask(trt_mask)
+    trt_mask = make_std_mask(trt_mask)
+
     print(trt_mask)
     src_mask = None
     print(model(src, trt, src_mask, trt_mask))
