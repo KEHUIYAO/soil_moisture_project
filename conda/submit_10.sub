@@ -1,8 +1,8 @@
 universe = vanilla
-executable = submit_5.sh
-output = submit_5.out
+executable = submit_9.sh
+output = $(Cluster)_$(Process).out
 
-transfer_input_files = environment.yml, ../src/train.py, ../src/load_data.py, ../src/model.py, ../data/SMAP_Climate_In_Situ_Kenaston_training_data.csv.zip
+transfer_input_files = environment.yml, ../src/train_transformer.py, ../src/load_data.py, ../src/transformer.py, ../data/Insitu_gap_filling_training_data.csv.zip
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
@@ -13,10 +13,10 @@ requirements = (CUDADriverVersion >= 10.2)
 request_gpus = 1
 
 +WantGPULab = true
-+GPUJobLength = "short"
++GPUJobLength = "long"
 
 request_cpus = 1
-request_memory = 4GB
+request_memory = 16GB
 request_disk = 5GB
 
 log = $(Cluster)_$(Process).log
