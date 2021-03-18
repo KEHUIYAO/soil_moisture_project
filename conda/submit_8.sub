@@ -1,6 +1,6 @@
 universe = vanilla
 executable = submit_8.sh
-output = $(Cluster)_$(Process).out
+output = submit_8.out
 
 transfer_input_files = environment.yml, ../src/train_transformer.py, ../src/load_data.py, ../src/transformer.py, ../data/SMAP_Climate_In_Situ_Kenaston_training_data.csv.zip
 should_transfer_files = YES
