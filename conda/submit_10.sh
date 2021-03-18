@@ -6,7 +6,7 @@ echo 'System: ' `uname -spo`
 echo 'GPU: ' `lspci | grep NVIDIA`
 
 # Prepare the dataset
-unzip Insitu_gap_filling_training_data.csv.zip
+unzip SMAP_Climate_In_Situ_Kenaston_training_data.csv
 
 # Following the example from http://chtc.cs.wisc.edu/conda-installation.shtml
 # except here we download the installer instead of transferring it
