@@ -36,4 +36,4 @@ conda list
 
 # Modify these lines to run your desired Python script
 python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'CUDA device: {torch.cuda.get_device_name(0)}')"
-python train_transformer.py --load_data="Insitu_gap_filling_training_data.csv" --epochs=100 --early_stopping_patience=10 --save_model='model_9.pt' --save_figure='model_9.png' --save_entire_model='model_entire_9.pt' --num_layers=6 --d_model=128 --d_ff=512 --h=8
+python train_transformer.py --epochs=100 --early_stopping_patience=10 --save_model='model_10.pt' --save_figure='model_10.png' --save_entire_model='model_entire_10.pt' --num_layers=6 --d_model=128 --d_ff=512 --h=8 --use_training_mask=false
