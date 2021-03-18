@@ -98,7 +98,7 @@ def epoch_time(start_time, end_time):
     return elapsed_mins, elapsed_secs
 
 
-def add_training_mask(mask, p=0.5):
+def add_training_mask(mask, p=0.7):
     "randomly mask some true data and ask our model to predict them"
     device = mask.device
     size = mask.size(-2)
@@ -220,8 +220,8 @@ if __name__ == '__main__':
     opt = parser.parse_args()
 
     # set random seed to 0
-    np.random.seed(0)
-    torch.manual_seed(0)
+    #np.random.seed(0)
+    #torch.manual_seed(0)
 
     # load the data and making training set
     time_varying_features_name = opt.time_varying_features_name.split(',')
