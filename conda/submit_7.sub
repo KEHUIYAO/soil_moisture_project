@@ -19,7 +19,7 @@ request_cpus = 1
 request_memory = 4GB
 request_disk = 5GB
 
-log = $(Cluster)_$(Process).log
-error = $(Cluster)_$(Process).err
+log = submit_7.log
+error = submit_7.err
 
 queue 1

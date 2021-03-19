@@ -6,6 +6,7 @@ import time
 import math
 import argparse
 import numpy as np
+import math
 from torch.utils.data import Dataset, DataLoader
 import matplotlib
 matplotlib.use('Agg')
@@ -121,6 +122,7 @@ def train(model, device, dataLoader, optimizer, criterion, clip, use_training_ma
     model.to(device)
     model.train()
     epoch_loss = 0
+    throw_away_obs = 0
     for i, batch in enumerate(dataLoader):
         x, mask, features, static = batch
         # decide to use which training scheme
@@ -148,14 +150,22 @@ def train(model, device, dataLoader, optimizer, criterion, clip, use_training_ma
 
         # when computing the loss function, use training mask
         training_mask = training_mask == 1
-        loss = criterion(output[:,:-1,:][training_mask[:,1:,:]], x[:,1:,:][training_mask[:,1:,:]])
+
+        # if there is obs after training_mask
+        if torch.any(training_mask[:,1:,:]):
+            loss = criterion(output[:,:-1,:][training_mask[:,1:,:]], x[:,1:,:][training_mask[:,1:,:]])
+        else:
+            throw_away_obs += 1
+            continue
+
         loss.backward()
         # clip gradients
         torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
         optimizer.step()
+        #print(loss.item())
         epoch_loss += loss.item()
 
-    return epoch_loss / len(dataLoader)
+    return epoch_loss / (len(dataLoader) - throw_away_obs)
 
 
 def evaluate(model,device, dataLoader, criterion, use_training_mask):
@@ -164,6 +174,7 @@ def evaluate(model,device, dataLoader, criterion, use_training_mask):
     model.eval()
     epoch_loss = 0
     rsquare_total = 0
+    throw_away_obs = 0
     with torch.no_grad():
         for i, batch in enumerate(dataLoader):
             x, mask, features, static = batch
@@ -186,15 +197,22 @@ def evaluate(model,device, dataLoader, criterion, use_training_mask):
             output = model(features, x, src_mask, tgt_mask)
 
             training_mask = training_mask == 1
+
+
             loss = criterion(output[:,:-1,:][training_mask[:,1:,:]], x[:,1:,:][training_mask[:,1:,:]])
             # Rsquare
             rsquare = Rsquare(output[0,:-1,0][training_mask[0,1:,0]], x[0,1:,0][training_mask[0,1:,0]])
+
+            # if loss is nan, which means the there is no obs, or rsquare is nan, which means there is only one obs
+            if math.isnan(loss.item()) or math.isnan(rsquare.item()):
+                throw_away_obs += 1
+                continue
 
             # cumulate the loss
             epoch_loss += loss.item()
             rsquare_total += rsquare.item()
 
-    return epoch_loss / len(dataLoader), rsquare_total / len(dataLoader)
+    return epoch_loss / (len(dataLoader) - throw_away_obs), rsquare_total / (len(dataLoader) - throw_away_obs)
 
 
 
@@ -212,9 +230,9 @@ if __name__ == '__main__':
     parser.add_argument("--dropout", type = float, default= 0.1, help = 'the dropout rate in lstm')
     parser.add_argument("--early_stopping_patience", type = int, default = 10, help = 'set the maximum number of epochs we should wait when the validation error does not decrease')
     parser.add_argument("--criterion", type = str, default='mse', help='choose mse or rsquare as the loss')
-    parser.add_argument("--d_model", type=int, default=16)
+    parser.add_argument("--d_model", type=int, default=8)
     parser.add_argument("--d_ff", type=int, default=64)
-    parser.add_argument("--h", type=int, default=4)
+    parser.add_argument("--h", type=int, default=2)
     parser.add_argument("--varying_learning_rate", type=str, default='true')
     parser.add_argument("--use_training_mask", type=str, default='true')
     opt = parser.parse_args()
