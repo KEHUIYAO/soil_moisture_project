@@ -261,6 +261,7 @@ if __name__ == '__main__':
     else:
         optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
+
     # begin to train
     # see how many parameters in the model
     print(f'The model has {count_parameters(model):,} trainable parameters')

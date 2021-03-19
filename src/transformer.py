@@ -27,6 +27,7 @@ class EncoderDecoder(nn.Module):
         return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
 
 
+
 class Generator(nn.Module):
     """
     Project from a d_model dim vector to a scalar(final estimation)
