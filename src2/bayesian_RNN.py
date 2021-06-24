@@ -469,14 +469,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", type=str, default='train', help="choose training mode or test mode")
     opt = parser.parse_args()
-    N = 10
-    T = 20
+    N = 1000
+    T = 100
     BATCH_SIZE = 1
     FEATURE_DIM = 3
     INPUT_DIM = FEATURE_DIM + 1
     HIDDEN_DIM = 50
 
-    tail = 5
+    tail = 20
     teacher_force_ratio = 0.5
 
     X, Y = simulation(N, T, FEATURE_DIM)
@@ -490,8 +490,8 @@ if __name__ == "__main__":
     training_data, validation_data = torch.utils.data.random_split(data, [training_size, validation_size])
     training_dataLoader = torch.utils.data.DataLoader(training_data, batch_size=BATCH_SIZE, shuffle=True)
     validation_dataLoader = torch.utils.data.DataLoader(validation_data, batch_size=BATCH_SIZE, shuffle=True)
-    mylstm = LSTM(input_dim=INPUT_DIM, hidden_dim=HIDDEN_DIM, dropouti=0.1,
-                  dropoutw=0.1, dropouto=0.1)
+    mylstm = LSTM(input_dim=INPUT_DIM, hidden_dim=HIDDEN_DIM, dropouti=0.25,
+                  dropoutw=0.25, dropouto=0.25)
 
     # for i in mylstm.named_parameters():
     #     print(i)
@@ -504,11 +504,11 @@ if __name__ == "__main__":
         criterion = nn.MSELoss()
         optimizer = optim.Adam(mylstm.parameters(), lr=1e-3)
 
-        n_epochs = 2
+        n_epochs = 50
         for i in range(n_epochs):
             training_loss = train(mylstm, device, training_dataLoader, optimizer, criterion, tail=tail, teacher_force_ratio=teacher_force_ratio)
             validation_loss = evaluate(mylstm, device, validation_dataLoader, criterion, tail=tail, teacher_force_ratio=0)
-            mc_dropout_loss = mc_dropout_evaluation(mylstm, device, validation_dataLoader, criterion, tail=tail, teacher_force_ratio=0, n_sim=10)
+            mc_dropout_loss = mc_dropout_evaluation(mylstm, device, validation_dataLoader, criterion, tail=tail, teacher_force_ratio=0, n_sim=20)
             print("---Epoch %d---"%i)
             print("training loss is %.4f"%training_loss)
             print("mc dropout loss is %.4f"%mc_dropout_loss)
