@@ -116,10 +116,10 @@ def test(model, device, dataLoader, criterion, teacher_force_ratio = 1):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_TxSON_testing_data.csv", help = 'file name of the dataset')
+    #parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_TxSON_testing_data.csv", help = 'file name of the dataset')
 
-    # parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_testing_data.csv", help = 'file name of the dataset')
-    parser.add_argument("--load_entire_model", type = str, default="../conda/model_entire_4.pt", help = 'file name to load the entire model')
+    parser.add_argument("--load_data", type = str, default="../../SMAP_Climate_In_Situ_Kenaston_testing_data.csv", help = 'file name of the dataset')
+    parser.add_argument("--load_entire_model", type = str, default="../conda/model_entire_5.pt", help = 'file name to load the entire model')
 
     opt = parser.parse_args()
 

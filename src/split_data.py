@@ -37,14 +37,26 @@ def split_data(csv_file, training_data_proportion):
 if __name__ == '__main__':
 
 
-    training_data, testing_data = split_data("../../SMAP_Climate_In_Situ_TxSON.csv",0.7)
+    # training_data, testing_data = split_data("../../SMAP_Climate_In_Situ_TxSON.csv",0.7)
 
-    training_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_training_data.csv")
-    testing_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_testing_data.csv")
+    # training_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_training_data.csv")
+    # testing_data.to_csv("../../SMAP_Climate_In_Situ_TxSON_testing_data.csv")
     #
     #
     # training_data, testing_data = split_data("../../SMAP_Climate_In_Situ_Kenaston.csv",0.7)
     #
     # training_data.to_csv("../../SMAP_Climate_In_Situ_Kenaston_training_data.csv")
     # testing_data.to_csv("../../SMAP_Climate_In_Situ_Kenaston_testing_data.csv")
+
+    # training_data, testing_data = split_data("../../Insitu_gap_filling_data.csv", 0.7)
+    # training_data.to_csv("../../Insitu_gap_filling_training_data.csv")
+    # testing_data.to_csv("../../Insitu_gap_filling_testing_data.csv")
+    #
+    # toy_data, _ = split_data("../../SMAP_Climate_In_Situ_Kenaston.csv",0.01)
+    # toy_data.to_csv("../../toy_data.csv")
+
+    simulation_training_data, simulation_testing_data = split_data("../../simulation_data.csv", 0.7)
+    simulation_training_data.to_csv("../../simulation_training_data.csv")
+    simulation_testing_data.to_csv("../../simulation_testing_data.csv")
+    
 

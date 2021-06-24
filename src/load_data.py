@@ -29,14 +29,19 @@ class SoilMoistureDataset(Dataset):
 
         # create a column called mask, which indicates whether SMAP_1km data is missing or not
         data['mask'] = 1
-        data['mask'][pd.isna(data.SMAP_1km)] = 0
-
-        # fill in the missing values of the feature "SMAP_36km"
-        data['SMAP_36km'] = data['SMAP_36km'].fillna(method = 'ffill')
-        data['SMAP_36km'] = data['SMAP_36km'].fillna(method = 'bfill')
 
         # replace the missing values with 0 for the response variable
         data['SMAP_1km'][pd.isna(data['SMAP_1km'])] = 0
+
+        # if data.SMAP_1km = 0, it means there is orginally no obs here
+        data['mask'][pd.isna(data.SMAP_1km)] = 0
+
+        # fill in the missing values of the feature "SMAP_36km"
+        if "SMAP_36km" in time_varying_features_name:
+            data['SMAP_36km'] = data['SMAP_36km'].fillna(method = 'ffill')
+            data['SMAP_36km'] = data['SMAP_36km'].fillna(method = 'bfill')
+
+
 
         # For future convenience, create an index column to record position
         data['index'] = list(range(data.shape[0]))
@@ -58,6 +63,14 @@ class SoilMoistureDataset(Dataset):
         # use one year's data for training
         self.ind_list = data['index'][~data.duplicated(subset=['POINTID', 'year'])]
         self.ind_list = list(self.ind_list) + [data.shape[0]]
+
+        # see the length of each sequence
+        ######## TODO ##################
+
+
+
+
+        ######## TODO ###################
 
         # save as class members
         self.data = data
@@ -110,7 +123,13 @@ class SoilMoistureDataset(Dataset):
 
         elif self.transform == 'pad_tail':
             # let every sequence has the same length, padding the sequence with 0 afterwards if the sequence is not long enough
+            ############## TODO ##############
+
+
             pass
+
+
+            ############## TODO ##############
 
 
 
