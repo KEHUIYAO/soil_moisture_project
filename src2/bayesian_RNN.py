@@ -123,8 +123,6 @@ def train(model, device, dataLoader, optimizer, criterion, tail=5, teacher_force
         y = y.to(device)
 
 
-        loss = 0
-        loss = loss.to(device)
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
 
@@ -152,7 +150,7 @@ def train(model, device, dataLoader, optimizer, criterion, tail=5, teacher_force
             output_list[:, j] = output[:,-1]
 
 
-        loss += criterion(output_list, y[:, (T-tail):])
+        loss = criterion(output_list, y[:, (T-tail):])
 
 
         optimizer.zero_grad()
@@ -175,8 +173,7 @@ def evaluate(model, device, dataLoader, criterion, tail=5, teacher_force_ratio=0
         x = x.to(device)
         y = y.to(device)
 
-        loss = 0
-        loss = loss.to(device)
+
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
         output_list.to(device)
@@ -201,7 +198,7 @@ def evaluate(model, device, dataLoader, criterion, tail=5, teacher_force_ratio=0
             output_list[:, j] = output[:, -1]
 
 
-        loss += criterion(output_list, y[:, (T - tail):])
+        loss = criterion(output_list, y[:, (T - tail):])
 
 
         epoch_loss += loss.item()
@@ -224,8 +221,6 @@ def mc_dropout_evaluation(model, device, dataLoader, criterion, tail=5, teacher_
 
         n_output_list = torch.zeros((n_sim, N, tail))
         for n in range(n_sim):
-            loss = 0
-            loss = loss.to(device)
             # use dynamic programming here
             output_list = torch.zeros((N, tail)).double()
             output_list.to(device)
@@ -254,7 +249,7 @@ def mc_dropout_evaluation(model, device, dataLoader, criterion, tail=5, teacher_
 
         output_list = torch.mean(n_output_list, dim=0)
 
-        loss += criterion(output_list, y[:, (T-tail):])
+        loss = criterion(output_list, y[:, (T-tail):])
         epoch_loss += loss.item()
 
 
@@ -271,8 +266,7 @@ def mc_dropout_forward_pass(model, device, x, y, tail=5, teacher_force_ratio=1, 
 
     n_output_list = torch.zeros((n_sim, N, tail))
     for n in range(n_sim):
-        loss = 0
-        loss = loss.to(device)
+
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
         output_list.to(device)
