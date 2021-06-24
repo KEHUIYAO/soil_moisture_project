@@ -124,6 +124,7 @@ def train(model, device, dataLoader, optimizer, criterion, tail=5, teacher_force
 
 
         loss = 0
+        loss = loss.to(device)
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
 
@@ -175,6 +176,7 @@ def evaluate(model, device, dataLoader, criterion, tail=5, teacher_force_ratio=0
         y = y.to(device)
 
         loss = 0
+        loss = loss.to(device)
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
         output_list.to(device)
@@ -223,6 +225,7 @@ def mc_dropout_evaluation(model, device, dataLoader, criterion, tail=5, teacher_
         n_output_list = torch.zeros((n_sim, N, tail))
         for n in range(n_sim):
             loss = 0
+            loss = loss.to(device)
             # use dynamic programming here
             output_list = torch.zeros((N, tail)).double()
             output_list.to(device)
@@ -269,6 +272,7 @@ def mc_dropout_forward_pass(model, device, x, y, tail=5, teacher_force_ratio=1, 
     n_output_list = torch.zeros((n_sim, N, tail))
     for n in range(n_sim):
         loss = 0
+        loss = loss.to(device)
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
         output_list.to(device)
@@ -470,14 +474,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", type=str, default='train', help="choose training mode or test mode")
     opt = parser.parse_args()
-    N = 100
-    T = 100
+    N = 10
+    T = 20
     BATCH_SIZE = 1
     FEATURE_DIM = 3
     INPUT_DIM = FEATURE_DIM + 1
     HIDDEN_DIM = 50
 
-    tail = 20
+    tail = 5
     teacher_force_ratio = 0.5
 
     X, Y = simulation(N, T, FEATURE_DIM)
