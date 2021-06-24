@@ -126,7 +126,7 @@ def train(model, device, dataLoader, optimizer, criterion, tail=5, teacher_force
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
 
-        output_list.to(device)
+        output_list = output_list.to(device)
 
 
         for j in range(tail):
@@ -176,7 +176,7 @@ def evaluate(model, device, dataLoader, criterion, tail=5, teacher_force_ratio=0
 
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
-        output_list.to(device)
+        output_list = output_list.to(device)
 
         for j in range(tail):
             xx = x[:, 1:(T - tail + j + 1), ]
@@ -223,7 +223,7 @@ def mc_dropout_evaluation(model, device, dataLoader, criterion, tail=5, teacher_
         for n in range(n_sim):
             # use dynamic programming here
             output_list = torch.zeros((N, tail)).double()
-            output_list.to(device)
+            output_list = output_list.to(device)
 
             for j in range(tail):
                 xx = x[:, 1:(T - tail + j + 1), ]
@@ -269,7 +269,7 @@ def mc_dropout_forward_pass(model, device, x, y, tail=5, teacher_force_ratio=1, 
 
         # use dynamic programming here
         output_list = torch.zeros((N, tail)).double()
-        output_list.to(device)
+        output_list = output_list.to(device)
 
         for j in range(tail):
             xx = x[:, 1:(T - tail + j + 1), ]
