@@ -220,6 +220,7 @@ def mc_dropout_evaluation(model, device, dataLoader, criterion, tail=5, teacher_
         y = y.to(device)
 
         n_output_list = torch.zeros((n_sim, N, tail))
+        n_output_list = n_output_list.to(device)
         for n in range(n_sim):
             # use dynamic programming here
             output_list = torch.zeros((N, tail)).double()
