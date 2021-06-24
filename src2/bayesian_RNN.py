@@ -516,15 +516,15 @@ if __name__ == "__main__":
             print("validation loss is %.4f"%validation_loss)
 
         #visualization
-        for i, batch in enumerate(training_dataLoader):
-            if i == 1:
-                break
-
-            test_point_x, test_point_y = batch
-            pred_y, lower, upper = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=10)
-
-            y_true = test_point_y[:, (T-tail):]
-            visualization(pred_y, lower, upper, y_true)
+        # for i, batch in enumerate(training_dataLoader):
+        #     if i == 1:
+        #         break
+        #
+        #     test_point_x, test_point_y = batch
+        #     pred_y, lower, upper = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=10)
+        #
+        #     y_true = test_point_y[:, (T-tail):]
+        #     visualization(pred_y, lower, upper, y_true)
 
         torch.save(mylstm.state_dict(), 'model.pt')
 
