@@ -529,6 +529,7 @@ if __name__ == "__main__":
             # early stopping
             if mc_dropout_loss < best_loss:
                 best_loss = mc_dropout_loss
+                count = 0
                 # save state dict
                 torch.save(mylstm.state_dict(), 'model.pt')
             else:
