@@ -1,0 +1,33 @@
+/var/lib/condor/execute/slot1/dir_35660/condor_exec.exe: line 6: lspci: command not found
+  0%|          | 0/36 [00:00<?, ?it/s]Extracting : cffi-1.14.0-py37h2e261b9_0.conda:   0%|          | 0/36 [00:00<?, ?it/s]Extracting : cffi-1.14.0-py37h2e261b9_0.conda:   3%|▎         | 1/36 [00:00<00:10,  3.47it/s]Extracting : ca-certificates-2020.1.1-0.conda:   3%|▎         | 1/36 [00:00<00:10,  3.47it/s]Extracting : openssl-1.1.1d-h7b6447c_4.conda:   6%|▌         | 2/36 [00:00<00:09,  3.47it/s] Extracting : openssl-1.1.1d-h7b6447c_4.conda:   8%|▊         | 3/36 [00:00<00:07,  4.47it/s]Extracting : python-3.7.6-h0371630_2.conda:   8%|▊         | 3/36 [00:01<00:07,  4.47it/s]  Extracting : python-3.7.6-h0371630_2.conda:  11%|█         | 4/36 [00:01<00:11,  2.82it/s]Extracting : ld_impl_linux-64-2.33.1-h53a641e_7.conda:  11%|█         | 4/36 [00:01<00:11,  2.82it/s]Extracting : sqlite-3.31.1-h7b6447c_0.conda:  14%|█▍        | 5/36 [00:01<00:11,  2.82it/s]          Extracting : conda-package-handling-1.6.0-py37h7b6447c_0.conda:  17%|█▋        | 6/36 [00:01<00:10,  2.82it/s]Extracting : pysocks-1.7.1-py37_0.conda:  19%|█▉        | 7/36 [00:01<00:10,  2.82it/s]                       Extracting : libstdcxx-ng-9.1.0-hdf63c60_0.conda:  22%|██▏       | 8/36 [00:01<00:09,  2.82it/s]Extracting : asn1crypto-1.3.0-py37_0.conda:  25%|██▌       | 9/36 [00:01<00:09,  2.82it/s]      Extracting : requests-2.22.0-py37_1.conda:  28%|██▊       | 10/36 [00:01<00:09,  2.82it/s]Extracting : tk-8.6.8-hbc83047_0.conda:  31%|███       | 11/36 [00:01<00:08,  2.82it/s]   Extracting : idna-2.8-py37_0.conda:  33%|███▎      | 12/36 [00:01<00:08,  2.82it/s]    Extracting : chardet-3.0.4-py37_1003.conda:  36%|███▌      | 13/36 [00:01<00:08,  2.82it/s]Extracting : urllib3-1.25.8-py37_0.conda:  39%|███▉      | 14/36 [00:01<00:07,  2.82it/s]  Extracting : pycosat-0.6.3-py37h7b6447c_0.conda:  42%|████▏     | 15/36 [00:01<00:07,  2.82it/s]Extracting : setuptools-45.2.0-py37_0.conda:  44%|████▍     | 16/36 [00:01<00:07,  2.82it/s]    Extracting : yaml-0.1.7-had09818_2.conda:  47%|████▋     | 17/36 [00:01<00:06,  2.82it/s]   Extracting : libgcc-ng-9.1.0-hdf63c60_0.conda:  50%|█████     | 18/36 [00:01<00:06,  2.82it/s]Extracting : certifi-2019.11.28-py37_0.conda:  53%|█████▎    | 19/36 [00:01<00:06,  2.82it/s] Extracting : libffi-3.2.1-hd88cf55_4.conda:  56%|█████▌    | 20/36 [00:01<00:05,  2.82it/s]  Extracting : readline-7.0-h7b6447c_5.conda:  58%|█████▊    | 21/36 [00:01<00:05,  2.82it/s]Extracting : libedit-3.1.20181209-hc058e9b_0.conda:  61%|██████    | 22/36 [00:01<00:04,  2.82it/s]Extracting : wheel-0.34.2-py37_0.conda:  64%|██████▍   | 23/36 [00:01<00:04,  2.82it/s]            Extracting : xz-5.2.4-h14c3975_4.conda:  67%|██████▋   | 24/36 [00:01<00:04,  2.82it/s]Extracting : tqdm-4.42.1-py_0.conda:  69%|██████▉   | 25/36 [00:01<00:03,  2.82it/s]   Extracting : ruamel_yaml-0.15.87-py37h7b6447c_0.conda:  72%|███████▏  | 26/36 [00:01<00:03,  2.82it/s]Extracting : pip-20.0.2-py37_1.conda:  75%|███████▌  | 27/36 [00:01<00:03,  2.82it/s]                 Extracting : pyopenssl-19.1.0-py37_0.conda:  78%|███████▊  | 28/36 [00:01<00:02,  2.82it/s]Extracting : cryptography-2.8-py37h1ba5d50_0.conda:  81%|████████  | 29/36 [00:01<00:02,  2.82it/s]Extracting : _libgcc_mutex-0.1-main.conda:  83%|████████▎ | 30/36 [00:01<00:02,  2.82it/s]         Extracting : zlib-1.2.11-h7b6447c_3.conda:  86%|████████▌ | 31/36 [00:01<00:01,  2.82it/s]Extracting : pycparser-2.19-py37_0.conda:  89%|████████▉ | 32/36 [00:01<00:01,  2.82it/s] Extracting : six-1.14.0-py37_0.conda:  92%|█████████▏| 33/36 [00:01<00:01,  2.82it/s]    Extracting : conda-4.8.2-py37_0.tar.bz2:  94%|█████████▍| 34/36 [00:01<00:00,  2.82it/s]Extracting : ncurses-6.2-he6710b0_0.tar.bz2:  97%|█████████▋| 35/36 [00:01<00:00,  2.82it/s]                                                                                            
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.8.3
+  latest version: 4.10.1
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+bayesian_RNN.py:488: DeprecationWarning:
+
+`np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+
+bayesian_RNN.py:96: UserWarning:
+
+nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+
+Traceback (most recent call last):
+  File "bayesian_RNN.py", line 510, in <module>
+    training_loss = train(mylstm, device, training_dataLoader, optimizer, criterion, tail=tail, teacher_force_ratio=teacher_force_ratio)
+  File "bayesian_RNN.py", line 154, in train
+    loss += criterion(output_list, y[:, (T-tail):])
+  File "/var/lib/condor/execute/slot1/dir_35660/miniconda3/envs/pytorch-gpu/lib/python3.7/site-packages/torch/nn/modules/module.py", line 550, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/var/lib/condor/execute/slot1/dir_35660/miniconda3/envs/pytorch-gpu/lib/python3.7/site-packages/torch/nn/modules/loss.py", line 432, in forward
+    return F.mse_loss(input, target, reduction=self.reduction)
+  File "/var/lib/condor/execute/slot1/dir_35660/miniconda3/envs/pytorch-gpu/lib/python3.7/site-packages/torch/nn/functional.py", line 2543, in mse_loss
+    ret = torch._C._nn.mse_loss(expanded_input, expanded_target, _Reduction.get_enum(reduction))
+RuntimeError: expected device cpu but got device cuda:0
