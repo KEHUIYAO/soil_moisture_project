@@ -258,7 +258,7 @@ def mc_dropout_evaluation(model, device, dataLoader, criterion, tail=5, teacher_
     return epoch_loss / len(dataLoader)
 
 
-def mc_dropout_forward_pass(model, device, x, y, tail=5, teacher_force_ratio=1, n_sim=100):
+def mc_dropout_forward_pass(model, device, x, y, tail=5, teacher_force_ratio=1, n_sim=100, return_all_sim=False):
 
     N = x.size(0)
     T = x.size(1)
@@ -299,13 +299,14 @@ def mc_dropout_forward_pass(model, device, x, y, tail=5, teacher_force_ratio=1, 
     lower = torch.quantile(n_output_list, q=0.05, dim=0)
     upper = torch.quantile(n_output_list, q=0.95, dim=0)
 
+    if not return_all_sim:
+        return mean, lower, upper
+    else:
+        return mean, lower, upper, n_output_list
 
-    return mean, lower, upper
 
-
-def visualization(mean, lower, upper, y_true):
+def visualization(mean, lower, upper, y_true, all_sim=None):
     "input mean, lower, and upper is of size (T,)"
-
     mean = mean.squeeze().detach().numpy()
     lower = lower.squeeze().detach().numpy()
     upper = upper.squeeze().detach().numpy()
@@ -333,14 +334,18 @@ def visualization(mean, lower, upper, y_true):
                             fill='tonexty',
                             showlegend=False)
 
-
     fig.add_trace(line_mean)
     fig.add_trace(y_true)
     fig.add_trace(line_upper)
     fig.add_trace(line_lower)
+    if all_sim is None:
+        pass
+    else:
+        all_sim = all_sim.squeeze().detach().numpy()
+        for i in range(all_sim.shape[0]):
+            fig.add_trace(go.Scatter(x=T, y=all_sim[i, :], mode='lines', line=dict(color='rgba(180, 31, 119, 0.4)', width=1)))
 
     fig.show()
-
 
 def simulation(N, T, feature_dim):
     "generate y(t) = x1(t) + x2(t-1) + epsilon(t), where epsilon(t) is auto-regressive"
@@ -470,14 +475,14 @@ if __name__ == "__main__":
     parser.add_argument("--mode", type=str, default='train', help="choose training mode or test mode")
     opt = parser.parse_args()
     N = 1000
-    T = 100
+    T = 50
     BATCH_SIZE = 1
     FEATURE_DIM = 3
     INPUT_DIM = FEATURE_DIM + 1
     HIDDEN_DIM = 50
 
-    tail = 20
-    teacher_force_ratio = 0.5
+    tail = 5
+    teacher_force_ratio = 0.2
 
     X, Y = simulation(N, T, FEATURE_DIM)
     # X, Y = simulation_2(N, T, FEATURE_DIM)
@@ -490,8 +495,8 @@ if __name__ == "__main__":
     training_data, validation_data = torch.utils.data.random_split(data, [training_size, validation_size])
     training_dataLoader = torch.utils.data.DataLoader(training_data, batch_size=BATCH_SIZE, shuffle=True)
     validation_dataLoader = torch.utils.data.DataLoader(validation_data, batch_size=BATCH_SIZE, shuffle=True)
-    mylstm = LSTM(input_dim=INPUT_DIM, hidden_dim=HIDDEN_DIM, dropouti=0.25,
-                  dropoutw=0.25, dropouto=0.25)
+    mylstm = LSTM(input_dim=INPUT_DIM, hidden_dim=HIDDEN_DIM, dropouti=0.1,
+                  dropoutw=0.1, dropouto=0.1)
 
     # for i in mylstm.named_parameters():
     #     print(i)
@@ -504,28 +509,43 @@ if __name__ == "__main__":
         criterion = nn.MSELoss()
         optimizer = optim.Adam(mylstm.parameters(), lr=1e-3)
 
-        n_epochs = 50
+        n_epochs = 100
+        best_loss = float('inf')
+        count = 0
+        early_stopping_patience = 10
         for i in range(n_epochs):
+
+            if count == early_stopping_patience:
+                break
+
             training_loss = train(mylstm, device, training_dataLoader, optimizer, criterion, tail=tail, teacher_force_ratio=teacher_force_ratio)
             validation_loss = evaluate(mylstm, device, validation_dataLoader, criterion, tail=tail, teacher_force_ratio=0)
-            mc_dropout_loss = mc_dropout_evaluation(mylstm, device, validation_dataLoader, criterion, tail=tail, teacher_force_ratio=0, n_sim=20)
+            mc_dropout_loss = mc_dropout_evaluation(mylstm, device, validation_dataLoader, criterion, tail=tail, teacher_force_ratio=0, n_sim=10)
             print("---Epoch %d---"%i)
             print("training loss is %.4f"%training_loss)
             print("mc dropout loss is %.4f"%mc_dropout_loss)
             print("validation loss is %.4f"%validation_loss)
 
-        #visualization
-        # for i, batch in enumerate(training_dataLoader):
-        #     if i == 1:
-        #         break
-        #
-        #     test_point_x, test_point_y = batch
-        #     pred_y, lower, upper = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=10)
-        #
-        #     y_true = test_point_y[:, (T-tail):]
-        #     visualization(pred_y, lower, upper, y_true)
+            # early stopping
+            if mc_dropout_loss < best_loss:
+                best_loss = mc_dropout_loss
+                # save state dict
+                torch.save(mylstm.state_dict(), 'model.pt')
+            else:
+                count += 1
 
-        torch.save(mylstm.state_dict(), 'model.pt')
+        #visualization
+        for i, batch in enumerate(training_dataLoader):
+            if i == 1:
+                break
+
+            test_point_x, test_point_y = batch
+            pred_y, lower, upper, all_sim = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=10, return_all_sim=True)
+
+            y_true = test_point_y[:, (T-tail):]
+            visualization(pred_y, lower, upper, y_true, all_sim)
+
+
 
 
     else:
@@ -540,10 +560,10 @@ if __name__ == "__main__":
                 break
 
             test_point_x, test_point_y = batch
-            pred_y, lower, upper = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=10)
+            pred_y, lower, upper, all_sim = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=10, return_all_sim=True)
 
             y_true = test_point_y[:, (T - tail):]
-            visualization(pred_y, lower, upper, y_true)
+            visualization(pred_y, lower, upper, y_true, all_sim)
 
 
 
