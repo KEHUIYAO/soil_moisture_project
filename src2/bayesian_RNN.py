@@ -420,10 +420,12 @@ def simulation_2(N, T, feature_dim):
         y = np.empty(cur_seq_len)
         x1 = np.empty(cur_seq_len)
         x2 = np.empty(cur_seq_len)
+        x3 = np.empty(cur_seq_len)
 
 
         x1[0] = np.random.uniform(0, 1, 1)
         x2[0] = np.random.uniform(0, 1, 1)
+        x3[0] = np.random.uniform(0, 1, 1)
         epsilon = np.random.normal(0, 0.5, 1)
         y[0] = x1[0] + x2[0] + epsilon
 
@@ -435,9 +437,10 @@ def simulation_2(N, T, feature_dim):
             epsilon = np.random.normal(0, 0.5, 1)
             x1[j] = np.random.uniform(0, 1, 1)
             x2[j] = np.random.uniform(0, 1, 1)
+            x3[j] = np.random.uniform(0, 1, 1)
             y[j] = y[j-1] + x1[j] + x2[j] + epsilon
 
-        X[i, :, :] = np.transpose(np.array([x1, x2]))
+        X[i, :, :] = np.transpose(np.array([x1, x2, x3]))
         Y[i, :] = y
 
     eps = 1e-4
@@ -475,13 +478,13 @@ if __name__ == "__main__":
     parser.add_argument("--mode", type=str, default='train', help="choose training mode or test mode")
     opt = parser.parse_args()
     N = 1000
-    T = 50
+    T = 20
     BATCH_SIZE = 1
     FEATURE_DIM = 3
     INPUT_DIM = FEATURE_DIM + 1
     HIDDEN_DIM = 50
 
-    tail = 5
+    tail = 10
     teacher_force_ratio = 0.2
 
     X, Y = simulation(N, T, FEATURE_DIM)
@@ -561,12 +564,38 @@ if __name__ == "__main__":
                 break
 
             test_point_x, test_point_y = batch
-            pred_y, lower, upper, all_sim = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=10, return_all_sim=True)
+            pred_y, lower, upper, all_sim = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y, tail=tail, teacher_force_ratio=0, n_sim=100, return_all_sim=True)
 
             y_true = test_point_y[:, (T - tail):]
             visualization(pred_y, lower, upper, y_true, all_sim)
 
 
+
+        # predict random sequence
+        X, Y = simulation_2(N, T, FEATURE_DIM)
+
+        data = DataWrapper(X, Y)
+
+        training_rate, validation_rate = 0.7, 0.3
+        training_size = np.int(N * training_rate)
+        validation_size = N - training_size
+
+        training_data, validation_data = torch.utils.data.random_split(data, [training_size, validation_size])
+        training_dataLoader = torch.utils.data.DataLoader(training_data, batch_size=BATCH_SIZE, shuffle=True)
+        validation_dataLoader = torch.utils.data.DataLoader(validation_data, batch_size=BATCH_SIZE, shuffle=True)
+
+        # visualization
+        for i, batch in enumerate(validation_dataLoader):
+            if i == 1:
+                break
+
+            test_point_x, test_point_y = batch
+            pred_y, lower, upper, all_sim = mc_dropout_forward_pass(mylstm, device, test_point_x, test_point_y,
+                                                                    tail=tail, teacher_force_ratio=0, n_sim=100,
+                                                                    return_all_sim=True)
+
+            y_true = test_point_y[:, (T - tail):]
+            visualization(pred_y, lower, upper, y_true, all_sim)
 
 
 
